@@ -10,7 +10,7 @@ test.describe ('Run all the test cases - Register', () => {
 test.beforeEach(async ({ page }) => {
   await prepareHome(page);
 });
-test("@smoke Register an Account Process final", async ({ page }) => {
+test("@smoke Register an Account", async ({ page }) => {
   const registerFromLoginPage = new LoginPage(page); 
   await registerFromLoginPage.clickOnSignInButton();
 
@@ -43,7 +43,7 @@ test("@smoke Register an Account Process final", async ({ page }) => {
   await page.locator('#continue').click();
   await page.locator('#loggedInCandidateName').click();
   await page.getByRole('link', { name: 'Logout' }).click();
-  
+
   await page.context().storageState({ path: 'storage/state.json' });
   saveUserData(emailForRegistration, passwordForRegistration);
 

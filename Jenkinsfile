@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    tools {
+         git 'DefaultGit'   // must match the name you configured
+
+        nodejs "NodeJS"   // must match the name you configured in Jenkins
+    }
+
     options {
         timeout(time: 60, unit: 'MINUTES')
         timestamps()
@@ -11,28 +17,30 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo '🔄 Checking out code from GitHub...'
-                checkout scm
+                git branch: 'main',
+                    url: 'https://github.com/umarmumtaz/PWAutomation_AI.git',
+                    credentialsId: 'github-token'
             }
         }
 
         stage('Install Dependencies') {
             steps {
                 echo '📦 Installing dependencies...'
-                sh 'npm ci'
+                bat 'npm ci'
             }
         }
 
         stage('Install Playwright Browsers') {
             steps {
                 echo '🌐 Installing Playwright browsers and system dependencies...'
-                sh 'npx playwright install --with-deps'
+                bat 'npx playwright install --with-deps'
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo '🧪 Running Playwright tests...'
-                sh 'npx playwright test'
+                bat 'npx playwright test --reporter=junit --reporter=html'
             }
         }
     }
@@ -40,10 +48,9 @@ pipeline {
     post {
         always {
             echo '📊 Archiving test reports...'
-            
-            // Archive HTML report
+
             publishHTML([
-                allowMissing: false,
+                allowMissing: true,
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
                 reportDir: 'playwright-report',
@@ -51,12 +58,10 @@ pipeline {
                 reportName: 'Playwright Test Report'
             ])
 
-            // Publish test results
-            junit testResults: 'test-results.json', 
+            junit testResults: 'test-results/results.xml',
                   allowEmptyResults: true,
                   skipPublishingChecks: true
 
-            // Archive test results and traces
             archiveArtifacts artifacts: 'test-results/**,playwright-report/**',
                              allowEmptyArchive: true,
                              onlyIfSuccessful: false

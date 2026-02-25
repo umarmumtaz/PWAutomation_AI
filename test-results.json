@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 1
+      "actualWorkers": 8
     },
     "preserveOutput": "always",
     "reporter": [
@@ -39,7 +39,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 8
         },
         "id": "chromium",
         "name": "chromium",
@@ -54,9 +54,9 @@
     "shard": null,
     "tags": [],
     "updateSnapshots": "missing",
-    "updateSourceMethod": "3way",
+    "updateSourceMethod": "patch",
     "version": "1.57.0",
-    "workers": 1,
+    "workers": 8,
     "webServer": null
   },
   "suites": [
@@ -75,7 +75,7 @@
           "specs": [
             {
               "title": "@smoke login with valid email, and password",
-              "ok": true,
+              "ok": false,
               "tags": [
                 "smoke"
               ],
@@ -88,26 +88,34 @@
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 20,
+                      "workerIndex": 0,
                       "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 24026,
-                      "errors": [],
+                      "status": "timedOut",
+                      "duration": 90084,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-02-24T16:52:05.858Z",
+                      "startTime": "2026-02-25T09:38:34.906Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\Login-Run-all-the-test-cas-dc9d8-th-valid-email-and-password-chromium\\test-finished-1.png"
+                          "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\Login-Run-all-the-test-cas-dc9d8-th-valid-email-and-password-chromium\\test-failed-1.png"
                         }
                       ]
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "42af536f2c838a173cb6-6b0820396d7546068721",
@@ -130,15 +138,15 @@
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 20,
-                      "parallelIndex": 0,
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 13721,
+                      "duration": 25491,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-02-24T16:52:30.367Z",
+                      "startTime": "2026-02-25T09:38:34.742Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -172,15 +180,15 @@
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 20,
-                      "parallelIndex": 0,
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 8968,
+                      "duration": 20483,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-02-24T16:52:44.153Z",
+                      "startTime": "2026-02-25T09:38:35.048Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -214,15 +222,15 @@
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 20,
-                      "parallelIndex": 0,
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
                       "status": "passed",
-                      "duration": 13285,
+                      "duration": 24593,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-02-24T16:52:53.168Z",
+                      "startTime": "2026-02-25T09:38:34.784Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -256,15 +264,15 @@
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 20,
-                      "parallelIndex": 0,
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
                       "status": "passed",
-                      "duration": 11436,
+                      "duration": 23142,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-02-24T16:53:06.493Z",
+                      "startTime": "2026-02-25T09:38:34.970Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -298,15 +306,15 @@
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 20,
-                      "parallelIndex": 0,
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
                       "status": "passed",
-                      "duration": 11355,
+                      "duration": 24714,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-02-24T16:53:17.966Z",
+                      "startTime": "2026-02-25T09:38:35.062Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -328,15 +336,175 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Register.spec.ts",
+      "file": "Register.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Run all the test cases - Register",
+          "file": "Register.spec.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "@smoke Register an Account Process final",
+              "ok": false,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "timedOut",
+                      "duration": 90133,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "\n                             Now, let's  get started\n                        \n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-25T09:38:35.255Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\Register-Run-all-the-test--2a5fc-er-an-Account-Process-final-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\Register-Run-all-the-test--2a5fc-er-an-Account-Process-final-chromium\\error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "cb5eb002671cd6c64a58-24f7fe4062be5e3dfc6b",
+              "file": "Register.spec.ts",
+              "line": 13,
+              "column": 5
+            },
+            {
+              "title": "@regression should not enable register when password is too weak",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 25711,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-25T09:38:35.169Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\Register-Run-all-the-test--a1fe4-r-when-password-is-too-weak-chromium\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "cb5eb002671cd6c64a58-059bbf2fb2436e78f902",
+              "file": "Register.spec.ts",
+              "line": 54,
+              "column": 5
+            },
+            {
+              "title": "@regression should show validation when email is missing",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 15158,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-25T09:38:56.952Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\Register-Run-all-the-test--5db3c-ation-when-email-is-missing-chromium\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "cb5eb002671cd6c64a58-e4b40be077ba230d178d",
+              "file": "Register.spec.ts",
+              "line": 65,
+              "column": 5
+            }
+          ]
+        }
+      ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-02-24T16:52:04.405Z",
-    "duration": 85070.52199999988,
-    "expected": 6,
+    "startTime": "2026-02-25T09:38:32.598Z",
+    "duration": 94258.73000000001,
+    "expected": 7,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 2,
     "flaky": 0
   }
 }
