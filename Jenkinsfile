@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-         git 'DefaultGit'   // must match the name you configured
+         git 'Default'   // must match the name you configured
 
         nodejs "NodeJS"   // must match the name you configured in Jenkins
     }
