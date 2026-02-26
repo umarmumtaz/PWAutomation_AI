@@ -1,11 +1,11 @@
-import { test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import JobApplyPage from '../pages/ApplyForJobPage';
 import  {prepareHome}  from '../utils/commonFiles.ts';
-test.describe   ('About you tab tests', () => { 
+test.describe('About you tab tests', () => { 
  test.beforeEach(async ({ page }) => {
    await prepareHome(page);
  });
-test('Apply for a job', async ({ page }) => {
+test('@smoke Apply for a job', async ({ page }) => {
   const jobPage = new JobApplyPage(page);
   await jobPage.clickonJob();
   await jobPage.applyJob();

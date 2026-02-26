@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { SupportingInfoPage } from "../pages/SupportingInfoPage";
+import SupportingInfoPage from "../pages/SupportingInfoPage";
 
 
 
@@ -9,18 +9,19 @@ test.describe('Supporting information tab tests', () => {
   });
 
   test('@smoke Fill supporting information tab data', async ({ page }) => {     
- const supportingInfo = new AboutYouPage(page);
+ const supportingInfo = new SupportingInfoPage(page);
  await supportingInfo.fillSupportingInfo();
  await page.waitForLoadState('networkidle');
- await page.supportingInfo.additionalInfo();
+ await supportingInfo.additionalInfo();
 
   });
 
-  test.afterAll(async ({ page }) => {
- await page.getByRole('button', { name: 'Save and exit' }).click();
+
+test.afterAll(async ({ page }) => {
+await page.getByRole('button', { name: 'Save and exit' }).click();
 await page.getByRole('button', { name: 'Confirm' }).click();
 
-  })
+})  
 });
 
 

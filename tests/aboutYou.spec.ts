@@ -25,7 +25,7 @@ test('@smoke Add or update employment details', async ({ page }) => {
   await aboutYou.updateEmployment();
 await aboutYou.deleteEmployment();
 });
-
+//issue with data and other
 test('@smoke Add or update education details', async ({ page }) => {
   const aboutYou = new AboutYouPage(page);
   await aboutYou.addEducation();
@@ -34,12 +34,10 @@ test('@smoke Add or update education details', async ({ page }) => {
   await page.waitForLoadState('networkidle');
 });
 
- test.afterAll(async ({ page }) => {
- await page.getByRole('button', { name: 'Save and exit' }).click();
-await page.getByRole('button', { name: 'Confirm' }).click();
-
-  })
-
+test.afterEach(async ({ page }) => {
+  await page.getByRole('button', { name: 'Save and exit' }).click();
+  await page.getByRole('button', { name: 'Confirm' }).click();
+});
 
 
 });

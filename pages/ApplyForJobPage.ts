@@ -9,13 +9,13 @@ export default class JobApplyPage {
   }
 
   async clickonJob() {
-    await this.page.getByTestId('a-btn-top-job-apply-button').click();
+    await this.page.getByTestId('a-job-detail-manual tester').click();
   }
 async   applyJob() {
-    await this.page.getByTestId('a-btn-decide-internal-external').click();
+    await this.page.getByTestId('a-btn-top-job-apply-button').click();
 }
 async   verifyTheJobTitle() {
     await expect(this.page.getByText('You are applying for the role')).toBeVisible();
     await expect(this.page.getByText('manual tester')).toBeVisible();
   }
-}
+}await page.getByTestId('a-btn-top-job-apply-button').click();

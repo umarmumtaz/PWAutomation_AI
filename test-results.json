@@ -48,7 +48,7 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 180000
+        "timeout": 0
       }
     ],
     "shard": null,
@@ -61,61 +61,104 @@
   },
   "suites": [
     {
-      "title": "test-2.spec.ts",
-      "file": "test-2.spec.ts",
+      "title": "supportingInfor.spec.ts",
+      "file": "supportingInfor.spec.ts",
       "column": 0,
       "line": 0,
-      "specs": [
+      "specs": [],
+      "suites": [
         {
-          "title": "test",
-          "ok": true,
-          "tags": [],
-          "tests": [
+          "title": "Supporting information tab tests",
+          "file": "supportingInfor.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
             {
-              "timeout": 180000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "chromium",
-              "projectName": "chromium",
-              "results": [
+              "title": "@smoke Fill supporting information tab data",
+              "ok": false,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
                 {
-                  "workerIndex": 2,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 18725,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-02-26T11:02:07.802Z",
+                  "timeout": 0,
                   "annotations": [],
-                  "attachments": [
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
                     {
-                      "name": "screenshot",
-                      "contentType": "image/png",
-                      "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\test-2-test-chromium\\test-finished-1.png"
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 97946,
+                      "error": {
+                        "message": "ReferenceError: AboutYouPage is not defined",
+                        "stack": "ReferenceError: AboutYouPage is not defined\n    at D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\supportingInfor.spec.ts:12:25",
+                        "location": {
+                          "file": "D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\supportingInfor.spec.ts",
+                          "column": 25,
+                          "line": 12
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 10 |\u001b[39m\n \u001b[90m 11 |\u001b[39m   test(\u001b[32m'@smoke Fill supporting information tab data'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {     \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 12 |\u001b[39m  \u001b[36mconst\u001b[39m supportingInfo \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mSupportingInfoPage\u001b[39m(page)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 13 |\u001b[39m  \u001b[36mawait\u001b[39m supportingInfo\u001b[33m.\u001b[39mfillSupportingInfo()\u001b[33m;\u001b[39m\n \u001b[90m 14 |\u001b[39m  \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 15 |\u001b[39m  \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msupportingInfo\u001b[33m.\u001b[39madditionalInfo()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\supportingInfor.spec.ts",
+                            "column": 25,
+                            "line": 12
+                          },
+                          "message": "ReferenceError: AboutYouPage is not defined\n\n\u001b[0m \u001b[90m 10 |\u001b[39m\n \u001b[90m 11 |\u001b[39m   test(\u001b[32m'@smoke Fill supporting information tab data'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {     \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 12 |\u001b[39m  \u001b[36mconst\u001b[39m supportingInfo \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mSupportingInfoPage\u001b[39m(page)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 13 |\u001b[39m  \u001b[36mawait\u001b[39m supportingInfo\u001b[33m.\u001b[39mfillSupportingInfo()\u001b[33m;\u001b[39m\n \u001b[90m 14 |\u001b[39m  \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 15 |\u001b[39m  \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msupportingInfo\u001b[33m.\u001b[39madditionalInfo()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\supportingInfor.spec.ts:12:25\u001b[22m"
+                        },
+                        {
+                          "message": "Error: \"context\" and \"page\" fixtures are not supported in \"afterAll\" since they are created on a per-test basis.\nIf you would like to reuse a single page between tests, create context manually with browser.newContext(). See https://aka.ms/playwright/reuse-page for details.\nIf you would like to configure your page before each test, do that in beforeEach hook instead."
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-26T15:21:52.341Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\supportingInfor-Supporting-cac9b-orting-information-tab-data-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\supportingInfor-Supporting-cac9b-orting-information-tab-data-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\supportingInfor.spec.ts",
+                        "column": 25,
+                        "line": 12
+                      }
                     }
-                  ]
+                  ],
+                  "status": "unexpected"
                 }
               ],
-              "status": "expected"
+              "id": "e384ffcd8f0c2dd80332-ec43dcef8a1f6f9b5860",
+              "file": "supportingInfor.spec.ts",
+              "line": 11,
+              "column": 7
             }
-          ],
-          "id": "b0639a757ff76b21cdba-ef10cfa7ec7e1428db71",
-          "file": "test-2.spec.ts",
-          "line": 3,
-          "column": 5
+          ]
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-02-26T11:02:05.475Z",
-    "duration": 21178.972000000067,
-    "expected": 1,
+    "startTime": "2026-02-26T15:21:47.729Z",
+    "duration": 103380.79299999999,
+    "expected": 0,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }
