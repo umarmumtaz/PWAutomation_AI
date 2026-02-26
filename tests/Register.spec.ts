@@ -5,6 +5,7 @@ import { saveUserData } from "../utils/userUtils.ts";
 import { prepareHome } from '../utils/commonFiles.ts';
 
 
+
 test.describe ('Run all the test cases - Register', () => {
   //test before all pre conditions of the TCs
 test.beforeEach(async ({ page }) => {
@@ -41,8 +42,10 @@ test("@smoke Register an Account", async ({ page }) => {
   await page.getByText('I agree to the').click();
   await page.waitForLoadState('networkidle');
   await page.locator('#continue').click();
-  await page.locator('#loggedInCandidateName').click();
-  await page.getByRole('link', { name: 'Logout' }).click();
+  
+  
+ // await page.locator('#loggedInCandidateName').click();
+ // await page.getByRole('link', { name: 'Logout' }).click();
 
   await page.context().storageState({ path: 'storage/state.json' });
   saveUserData(emailForRegistration, passwordForRegistration);

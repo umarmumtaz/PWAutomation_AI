@@ -32,7 +32,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 use: {
   /* Base URL to use in actions like `await page.goto('')`. */
-  baseURL: 'https://test.jobtrain.co.uk/ybscareers/Home/Job',
+  baseURL: 'https://test.jobtrain.co.uk/ybscareers/',
   headless: true,
   screenshot: "on",
   launchOptions: {
@@ -92,3 +92,105 @@ use: {
   //   reuseExistingServer: !process.env.CI,
   // },
 });
+
+
+
+
+// */
+
+// import { defineConfig, devices } from '@playwright/test';
+
+// export default defineConfig({
+//   testDir: './tests',
+
+//   /* Parallel control */
+//   fullyParallel: false, // 🔥 Important for controlled sequence
+//   workers: process.env.CI ? 1 : 1, // Run sequential for flow-based tests
+
+//   /* CI protection */
+//   forbidOnly: !!process.env.CI,
+//   retries: process.env.CI ? 2 : 0,
+
+//   timeout: 180000,
+
+//   /* Global setup for authentication (if you create global-setup.ts) */
+//   // globalSetup: require.resolve('./global-setup'),
+
+//   /* Reporters */
+//   reporter: [
+//     ['html', { open: 'always' }],
+//     ['json', { outputFile: 'test-results.json' }],
+//   ],
+
+//   /* Shared settings */
+//   use: {
+//     baseURL: 'https://test.jobtrain.co.uk/ybscareers/Home/Job',
+//     headless: true,
+
+//     screenshot: 'only-on-failure',
+//     video: 'retain-on-failure',
+//     trace: 'on-first-retry',
+
+//     launchOptions: {
+//       slowMo: 2000,
+//     },
+
+//     storageState: 'storage/state.json',
+//   },
+
+//   /* ==============================
+//      PROJECT FLOW CONTROL SECTION
+//      ============================== */
+
+//   projects: [
+//     /* 🔹 STEP 1: Apply Job Project */
+//     {
+//       name: 'apply-job',
+//       testMatch: /01-applyJob\.spec\.ts/,
+//       use: {
+//         browserName: 'chromium',
+//         viewport: { width: 1280, height: 720 },
+//       },
+//     },
+
+//     /* 🔹 STEP 2: Tabs Project (Depends on Apply) */
+//     {
+//       name: 'job-tabs',
+//       testMatch: /0[2-5]-.*\.spec\.ts/,
+//       dependencies: ['apply-job'], // 🔥 This ensures order
+//       use: {
+//         browserName: 'chromium',
+//         viewport: { width: 1280, height: 720 },
+//       },
+//     },
+
+//     /* 🔹 Optional: Full Regression Project */
+//     {
+//       name: 'full-regression',
+//       testIgnore: [
+//         /01-applyJob\.spec\.ts/,
+//         /0[2-5]-.*\.spec\.ts/,
+//       ],
+//       use: {
+//         browserName: 'chromium',
+//         viewport: { width: 1280, height: 720 },
+//       },
+//     },
+//   ],
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
