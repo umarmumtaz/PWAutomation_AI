@@ -34,7 +34,11 @@ test('@smoke Add or update education details', async ({ page }) => {
   await page.waitForLoadState('networkidle');
 });
 
-// apply after each save and execute
+ test.afterAll(async ({ page }) => {
+ await page.getByRole('button', { name: 'Save and exit' }).click();
+await page.getByRole('button', { name: 'Confirm' }).click();
+
+  })
 
 
 

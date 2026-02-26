@@ -12,5 +12,10 @@ test('Apply for a job', async ({ page }) => {
   await jobPage.verifyTheJobTitle();   
   await page.waitForLoadState('networkidle');
 });
+  test.afterAll(async ({ page }) => {
+ await page.getByRole('button', { name: 'Save and exit' }).click();
+await page.getByRole('button', { name: 'Confirm' }).click();
+
+  })
 
 })
