@@ -6,6 +6,7 @@ import {DeclarationPage} from "./DeclarationPage";
 
 
 export default class ApplyWizardPage {
+    
 public aboutYouPage: AboutYouPage;
 public supportingInfoPage: SupportingInfoPage;
 public equaloppsPage: EqualoppsPage;

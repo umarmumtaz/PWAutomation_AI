@@ -82,15 +82,4 @@ async   addotherEducation() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 }
