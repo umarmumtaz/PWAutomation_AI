@@ -1,5 +1,5 @@
 import {Page} from "@playwright/test";
-import {RegisterPage} from "./RegisterPage";
+//import {RegisterPage} from "./RegisterPage";
 import ApplyForJobPage from "./ApplyForJobPage";
 import AboutYouPage from "./AboutYouPage";
 import SupportingInfoPage from "./SupportingInfoPage";
@@ -9,7 +9,7 @@ import {DeclarationPage} from "./DeclarationPage";
 
 export default class ApplyWizardPage {
 
-public registerPage: RegisterPage;    
+//public registerPage: RegisterPage;    
 public JobApplyPage: ApplyForJobPage;
 public aboutYouPage: AboutYouPage;
 public supportingInfoPage: SupportingInfoPage;
@@ -19,7 +19,7 @@ public declarationPage: DeclarationPage;
 
 constructor(public page: Page) {
 
-    this.registerPage = new RegisterPage(page);
+  //  this.registerPage = new RegisterPage(page);
     this.JobApplyPage= new ApplyForJobPage(page);
     this.aboutYouPage = new AboutYouPage(page);
     this.supportingInfoPage = new SupportingInfoPage(page);
