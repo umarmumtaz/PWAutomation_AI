@@ -41,8 +41,7 @@ async   updateEmployment() {
   await this.page.getByTestId('div-equal-opportunities-form-section').getByRole('textbox', { name: 'Contact Person' }).fill('nanncy');
   await this.page.locator('#currentlyWork').click();
   await this.page.getByText('I currently work here').click();
-  await this.page.getByRole('textbox', { name: 'Start Date' }).click();
-  await this.page.getByRole('cell', { name: '27' }).first().click();
+  await this.page.getByRole('textbox', { name: 'Start Date' }).fill('10/10/2000');
 
   
 }

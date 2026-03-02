@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
-import equaloppsPage from '../pages/EqualOppsPage';
+import {EqualoppsPage} from '../pages/EqualoppsPage';
 
 test.describe ('Equal opps tab tests', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('Application/EqualOpportunities?Jobid=20323&section=5&Stage=0&QuestionId=0/');
   });   
 test('@smoke Fill equal opps tab data', async ({ page }) => {
-  const equalopps = new equaloppsPage(page);
-  await equalopps.fillEqualOpps();
+  const equalopps = new EqualoppsPage(page);
+  await equalopps.fillEqualopps();
   await page.waitForLoadState('networkidle');
   
 });

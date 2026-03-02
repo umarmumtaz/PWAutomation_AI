@@ -18,4 +18,4 @@ async   verifyTheJobTitle() {
     await expect(this.page.getByText('You are applying for the role')).toBeVisible();
     await expect(this.page.getByText('manual tester')).toBeVisible();
   }
-}await page.getByTestId('a-btn-top-job-apply-button').click();
+}

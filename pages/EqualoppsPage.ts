@@ -1,25 +1,25 @@
 import {expect, Page} from '@playwright/test';
 
 export class EqualoppsPage {
-   constructor(private page: Page) {}    
+   constructor(public page: Page) {}    
 
    
 async fillEqualopps() {
-  await page.getByTestId('a-equal-opportunities').click();
-  await page.getByTestId('select-txtSEX').selectOption('F');
-  await page.getByRole('textbox', { name: 'txtDATEOFBIRTH' }).click();
-  await page.getByRole('textbox', { name: 'txtDATEOFBIRTH' }).fill('10/20/2000');
-  await page.getByTestId('div-equal-opportunities-container').click();
-  await page.getByTestId('div-equal-opportunities-container').click();
-  await page.getByLabel('Marital Status/Civil').selectOption('M');
-  await page.getByLabel('What is your ethnicity?').selectOption('10');
-  await page.getByLabel('Nationality').selectOption('9');
-  await page.getByLabel('Age Range').selectOption('4');
-  await page.getByLabel('Do you have any dependants,').selectOption('Yes');
-  await page.getByLabel('Two Ticks').selectOption('1');
-  await page.getByTestId('btn-save-and-exit').click();
-  await page.getByRole('button', { name: 'Confirm' }).click();
-  await page.getByRole('button', { name: 'Close' }).click();
+  await this.page.getByTestId('a-equal-opportunities').click();
+  await this.page.getByTestId('select-txtSEX').selectOption('F');
+  await this.page.getByRole('textbox', { name: 'txtDATEOFBIRTH' }).click();
+  await this.page.getByRole('textbox', { name: 'txtDATEOFBIRTH' }).fill('10/20/2000');
+  await this.page.getByTestId('div-equal-opportunities-container').click();
+  await this.page.getByTestId('div-equal-opportunities-container').click();
+  await this.page.getByLabel('Marital Status/Civil').selectOption('M');
+  await this.page.getByLabel('What is your ethnicity?').selectOption('10');
+  await this.page.getByLabel('Nationality').selectOption('9');
+  await this.page.getByLabel('Age Range').selectOption('4');
+  await this.page.getByLabel('Do you have any dependants,').selectOption('Yes');
+  await this.page.getByLabel('Two Ticks').selectOption('1');
+  await this.page.getByTestId('btn-save-and-exit').click();
+  await this.page.getByRole('button', { name: 'Confirm' }).click();
+  await this.page.getByRole('button', { name: 'Close' }).click();
 
 }
 

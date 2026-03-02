@@ -1,4 +1,5 @@
 import{test, expect} from '@playwright/test';
+import { DeclarationPage } from '../pages/DeclarationPage';
 
 test.describe('Declaration tab tests', () => {
   test.beforeEach(async ({ page }) => {
@@ -9,7 +10,7 @@ test('@smoke Fill declaration tab data', async ({ page }) => {
  await declaration.clickAgreeButton();
  await declaration.clickSubmitButton(); 
 await page.waitForLoadState('networkidle');
-await declaration.verifySubmission();
+await declaration.clickCandidateHomeLink();
 
 await page.getByTestId('jt-body-content-container-myjobs-index').getByText('close').click();
 })

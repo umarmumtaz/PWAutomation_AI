@@ -12,7 +12,7 @@
     },
     {
       "name": ".AspNetCore.Mvc.CookieTempDataProvider",
-      "value": "CfDJ8HoC74PQZyFJhEfrdx4Mk0PSYikpPzyudvVzmfwsFDcvcvmXM13-q7XexJ0s9AIoBF_Vi9fdfH94XB3llU6rYVAVevA5UcCjVJmV9pti7aJ5WqRzNEB2ej6MkhSwelEIpK_-CqPXIC9-qQhF8bYsIHsba388jB-qMXahAJlBxTPnpF4U7xd_tmgVHgqm5ibfIQ",
+      "value": "CfDJ8HoC74PQZyFJhEfrdx4Mk0Ob1ZxYFvT2IS0FojxAsWVrLax2BYCno0LLNCFbxG5-bJyk7k0HhZa5JEVPtRfgc5OaNYhLIS9Q4UST-N-Y-LSXlaswrcC-dARCSSP7xbqcF-VgXyGcjElp2YA5O9Gju_xU_fTmCWeAavBgv-6ZxXlgd-GZ2Csl30PQifIy_laujw",
       "domain": "test.jobtrain.co.uk",
       "path": "/ybscareers",
       "expires": -1,
@@ -22,10 +22,10 @@
     },
     {
       "name": "_GRECAPTCHA",
-      "value": "09AKhCRwh1hX3Ja8z_o4CguKf3b9xUmRHt2HQYhRIkKZYezEvjDLAeMHbSQEfkbmkio6SCUdL4YCC4EtcqA-OHI1Y",
+      "value": "09AKhCRwj2o02R_UQnDv-tbv7xhdIDSW2EXqkaQ68vTosY-8wG6oNC1VKv4Ui6ac6EApi7dP-DTgYz8KoH-NsK1LI",
       "domain": "www.google.com",
       "path": "/recaptcha",
-      "expires": 1787669436.7328,
+      "expires": 1787744211.723357,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
@@ -91,11 +91,21 @@
       "sameSite": "Lax"
     },
     {
-      "name": "ai_session",
-      "value": "OT3a60g2zzaIdX6bo/PbXy|1772116497407|1772117437184",
+      "name": "jt.candidate.Session_2",
+      "value": "CfDJ8HoC74PQZyFJhEfrdx4Mk0M3CjMxhRcNDUNaRxhjfarTO73ZYulEwRLwPfusqb3P%2FOzASFzyRdSm87TrAoIwleFu516RyFLq678EzU45lfD2rZJxhrjjC72rWHfBomi4qOsd%2BObSxhe7TplfcUpc6csdjZKnQRox5hE9G8aMzDzM",
       "domain": "test.jobtrain.co.uk",
       "path": "/",
-      "expires": 1772119237.184516,
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ai_session",
+      "value": "WPNuMufJtm8phrdGkxtZkP|1772191860745|1772192212571",
+      "domain": "test.jobtrain.co.uk",
+      "path": "/",
+      "expires": 1772194012.571998,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
@@ -107,7 +117,7 @@
       "localStorage": [
         {
           "name": "_grecaptcha",
-          "value": "09AKhCRwgrjFgQShtgaR9EFJGyKKvmdFzRVWiTKu58HYbfmmaJHTFUdVs3C0MuSvBQ12WOH6x2aiugB9KY8xFrv-w5VDrvew3IuDVgI6t06yyzGunOgzUTgM9WqYhA8Ewc"
+          "value": "09AKhCRwhtEQjy6UIPzZU-ZnwggXq-79lGdo7mYUbMRLuXAPSilgISv5XVKua9oclPYYjQuTtVeM02O9ctSMg-ksoVQwMzuDKSP_Aat08qekeqUZrBCJyGT0rGPbix5lsf"
         }
       ]
     },
@@ -120,7 +130,7 @@
         },
         {
           "name": "rc::f",
-          "value": "0aADtQnsd_vI9PiW5KKEaGWonwfHpQ1dYw5WuGkw4RZXdcdZ8MK-u4zWDY3A8xdqsaVDO2BQg"
+          "value": "0aADtQnse9VWSztQYmUOVSfhPk3ItqEudYShOkV5PQTJ24Dw0Suf1ylOO7Rv9ONzyDYISeHVU"
         }
       ]
     }
