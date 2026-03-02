@@ -3,7 +3,7 @@
     "configFile": "D:\\PlaywrightAutomation\\PWAutomationAI\\playwright.config.ts",
     "rootDir": "D:/PlaywrightAutomation/PWAutomationAI/tests",
     "forbidOnly": false,
-    "fullyParallel": true,
+    "fullyParallel": false,
     "globalSetup": null,
     "globalTeardown": null,
     "globalTimeout": 0,
@@ -48,7 +48,7 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 180000
+        "timeout": 0
       }
     ],
     "shard": null,
@@ -61,63 +61,88 @@
   },
   "suites": [
     {
-      "title": "Register.spec.ts",
-      "file": "Register.spec.ts",
+      "title": "applyJobFlow.spec.ts",
+      "file": "applyJobFlow.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Run all the test cases - Register",
-          "file": "Register.spec.ts",
-          "line": 9,
-          "column": 6,
+          "title": "Apply for job flow tests",
+          "file": "applyJobFlow.spec.ts",
+          "line": 5,
+          "column": 15,
           "specs": [
             {
-              "title": "@smoke Register an Account",
-              "ok": true,
+              "title": "@smoke Apply for job flow",
+              "ok": false,
               "tags": [
                 "smoke"
               ],
               "tests": [
                 {
-                  "timeout": 180000,
+                  "timeout": 0,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 1,
+                      "workerIndex": 0,
                       "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 40618,
-                      "errors": [],
-                      "stdout": [
+                      "status": "failed",
+                      "duration": 41242,
+                      "error": {
+                        "message": "Error: page.goto: net::ERR_ABORTED at https://test.jobtrain.co.uk/\nCall log:\n\u001b[2m  - navigating to \"https://test.jobtrain.co.uk/\", waiting until \"load\"\u001b[22m\n",
+                        "stack": "Error: page.goto: net::ERR_ABORTED at https://test.jobtrain.co.uk/\nCall log:\n\u001b[2m  - navigating to \"https://test.jobtrain.co.uk/\", waiting until \"load\"\u001b[22m\n\n    at D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\applyJobFlow.spec.ts:7:20",
+                        "location": {
+                          "file": "D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\applyJobFlow.spec.ts",
+                          "column": 20,
+                          "line": 7
+                        },
+                        "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m test\u001b[33m.\u001b[39mdescribe\u001b[33m.\u001b[39mserial(\u001b[32m'Apply for job flow tests'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m  6 |\u001b[39m     test\u001b[33m.\u001b[39mbeforeEach(\u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m  9 |\u001b[39m     test  (\u001b[32m'@smoke Apply for job flow'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 10 |\u001b[39m         \u001b[36mconst\u001b[39m applyWizardPage \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mApplyWizardPage\u001b[39m(page)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
                         {
-                          "text": "\n                             Now, let's  get started\n                        \n"
+                          "location": {
+                            "file": "D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\applyJobFlow.spec.ts",
+                            "column": 20,
+                            "line": 7
+                          },
+                          "message": "Error: page.goto: net::ERR_ABORTED at https://test.jobtrain.co.uk/\nCall log:\n\u001b[2m  - navigating to \"https://test.jobtrain.co.uk/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m  5 |\u001b[39m test\u001b[33m.\u001b[39mdescribe\u001b[33m.\u001b[39mserial(\u001b[32m'Apply for job flow tests'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m  6 |\u001b[39m     test\u001b[33m.\u001b[39mbeforeEach(\u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m  9 |\u001b[39m     test  (\u001b[32m'@smoke Apply for job flow'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 10 |\u001b[39m         \u001b[36mconst\u001b[39m applyWizardPage \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mApplyWizardPage\u001b[39m(page)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\applyJobFlow.spec.ts:7:20\u001b[22m"
                         }
                       ],
+                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-02-27T11:36:12.550Z",
+                      "startTime": "2026-03-02T18:26:55.946Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\Register-Run-all-the-test--6af0b-r-smoke-Register-an-Account-chromium\\test-finished-1.png"
+                          "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\applyJobFlow-Apply-for-job-58385-ts-smoke-Apply-for-job-flow-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\applyJobFlow-Apply-for-job-58385-ts-smoke-Apply-for-job-flow-chromium\\error-context.md"
                         }
-                      ]
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\applyJobFlow.spec.ts",
+                        "column": 20,
+                        "line": 7
+                      }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
-              "id": "cb5eb002671cd6c64a58-311facf4a6a083ec6699",
-              "file": "Register.spec.ts",
-              "line": 14,
-              "column": 5
+              "id": "4f5c862c04026507556c-e747e5319d360c948bfe",
+              "file": "applyJobFlow.spec.ts",
+              "line": 9,
+              "column": 9
             }
           ]
         }
@@ -126,11 +151,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-02-27T11:36:10.433Z",
-    "duration": 43529.981999993324,
-    "expected": 1,
+    "startTime": "2026-03-02T18:26:52.679Z",
+    "duration": 45285.011999999995,
+    "expected": 0,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }
