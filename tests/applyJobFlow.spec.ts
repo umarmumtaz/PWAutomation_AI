@@ -21,26 +21,37 @@ test.describe.serial('Apply for job flow tests', () => {
         //apply to a job voyage care
         await applyWizardPage.JobApplyPage.clickonJob();
         await applyWizardPage.JobApplyPage.applyJob();
-        await applyWizardPage.JobApplyPage.verifyTheJobTitle();    
+        await applyWizardPage.JobApplyPage.verifyTheJobTitle();  
+        //issue with cv popup  
         await applyWizardPage.aboutYouPage.uploadCV();
-        await applyWizardPage.aboutYouPage.updateEmployment();
-        await applyWizardPage.aboutYouPage.deleteEmployment();
-        await applyWizardPage.aboutYouPage.addEducation();
-        await applyWizardPage.aboutYouPage.deleteEducation();
-        await applyWizardPage.aboutYouPage.addotherEducation();
-        await applyWizardPage.aboutYouPage.fillPersonalDetails();
-        await page.waitForLoadState('networkidle');
-        await applyWizardPage.supportingInfoPage.fillSupportingInfo();
-        await page.waitForLoadState('networkidle');
-        await applyWizardPage.supportingInfoPage.additionalInfo();
-        await page.waitForLoadState('networkidle');
-        await applyWizardPage.equaloppsPage.fillEqualopps();
-        await page.waitForLoadState('networkidle');
-        await applyWizardPage.declarationPage.clickAgreeButton();
-        await page.waitForLoadState('networkidle');
-        await applyWizardPage.declarationPage.clickSubmitButton();
-        await applyWizardPage.declarationPage.clickCandidateHomeLink();
         
-    })
+         await applyWizardPage.aboutYouPage.updateEmployment();
+await applyWizardPage.aboutYouPage.deleteEmployment();
+await applyWizardPage.aboutYouPage.addEducation();
+ await applyWizardPage.aboutYouPage.deleteEducation();
+await applyWizardPage.aboutYouPage.addotherEducation();
+await applyWizardPage.aboutYouPage.fillPersonalDetails();
+await applyWizardPage.aboutYouPage.updateEducation();
+await page.getByRole('button', { name: 'Continue' }).click();
+await page.waitForLoadState('networkidle');
+await applyWizardPage.supportingInfoPage.fillSupportingInfo();
+   await applyWizardPage.supportingInfoPage.additionalInfo();
+await page.getByRole('button', { name: 'Continue' }).click();
+await page.waitForLoadState('networkidle');
+await applyWizardPage.equaloppsPage.fillEqualopps();
+await page.getByTestId('btn-continue').click();
+await page.waitForLoadState('networkidle');
+await applyWizardPage.declarationPage.clickAgreeButton();
+await applyWizardPage.declarationPage.enterEmailLineManager();
+await applyWizardPage.declarationPage.clickSubmitButton();
+await applyWizardPage.declarationPage.clickCandidateHomeLink();
+
+
+
+
+    });
+
+
+  
 
 

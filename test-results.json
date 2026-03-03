@@ -61,69 +61,58 @@
   },
   "suites": [
     {
-      "title": "Login.spec.ts",
-      "file": "Login.spec.ts",
+      "title": "test-4.spec.ts",
+      "file": "test-4.spec.ts",
       "column": 0,
       "line": 0,
-      "specs": [],
-      "suites": [
+      "specs": [
         {
-          "title": "Run all the test cases",
-          "file": "Login.spec.ts",
-          "line": 5,
-          "column": 6,
-          "specs": [
+          "title": "test",
+          "ok": true,
+          "tags": [],
+          "tests": [
             {
-              "title": "@smoke login with valid email, and password",
-              "ok": true,
-              "tags": [
-                "smoke"
-              ],
-              "tests": [
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
                 {
-                  "timeout": 180000,
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2032,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-03-03T15:32:12.160Z",
                   "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
+                  "attachments": [
                     {
-                      "workerIndex": 8,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 24125,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-03-03T10:27:54.127Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\Login-Run-all-the-test-cas-dc9d8-th-valid-email-and-password-chromium\\test-finished-1.png"
-                        }
-                      ]
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\test-4-test-chromium\\test-finished-1.png"
                     }
-                  ],
-                  "status": "expected"
+                  ]
                 }
               ],
-              "id": "42af536f2c838a173cb6-6b0820396d7546068721",
-              "file": "Login.spec.ts",
-              "line": 11,
-              "column": 7
+              "status": "expected"
             }
-          ]
+          ],
+          "id": "e36f1d94e6ab19bad2b8-60d1c702fc23ffb2044d",
+          "file": "test-4.spec.ts",
+          "line": 3,
+          "column": 5
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-03-03T10:27:52.523Z",
-    "duration": 26400.757000000216,
+    "startTime": "2026-03-03T15:32:10.014Z",
+    "duration": 5065.91099999845,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

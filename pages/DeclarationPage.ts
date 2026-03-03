@@ -8,11 +8,20 @@ export class DeclarationPage {
   await this.page.getByText('Yes, I agree!').click();
   }
 
+async enterEmailLineManager(){
+await this.page.getByText('It is company policy that you').click();
+  await this.page.getByRole('textbox', { name: 'Please enter the email' }).click();
+  await this.page.getByRole('textbox', { name: 'Please enter the email' }).fill('nanncykevin@gmail.com')
+
+}
+
+
   async clickSubmitButton() {
-      await this.page.getByRole('button', { name: 'Submit application' }).click();
+     await this.page.getByRole('button', { name: 'Submit application' }).click();
   }
 
   async clickCandidateHomeLink() {
     await this.page.getByRole('link', { name: 'Candidate Home' }).click();
   }
+
 }
