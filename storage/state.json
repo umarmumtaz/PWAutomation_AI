@@ -12,7 +12,7 @@
     },
     {
       "name": ".AspNetCore.Mvc.CookieTempDataProvider",
-      "value": "CfDJ8HoC74PQZyFJhEfrdx4Mk0PFwDmQZylhAcWXbEerS5ghzFLuk9jVa-dip4csIQeQdnQkkg6W_plhz1JpU6NyfvG4wJ3rxSnJBOy_XHXRfzGq1j9hLhgSEtk2Y2zoJI_pMTFZsBoEXzW-Vb-Pfl8G9cPUZ-0ahoa4GxXS5BXbGr5x2hfJYGXK83xvQ_3_kReO_g",
+      "value": "CfDJ8HoC74PQZyFJhEfrdx4Mk0NLhnAXZprEccHkZu2OkNkaNd4uOempdul10MPWCcO6XHstMceGX2Q-vrDwgw88oe9UxFdz-qXLK0_M1cu3LLFHZyekX4-H9o3n00pnYQOSXVRn801jn8_hTkHeVSjS9_H6gjbnFnhEsONnWQ-WZkTBs037RXuRGiLmUtLKV7-3Dw",
       "domain": "test.jobtrain.co.uk",
       "path": "/ybscareers",
       "expires": -1,
@@ -21,11 +21,31 @@
       "sameSite": "Lax"
     },
     {
+      "name": ".AspNetCore.Antiforgery.RtGCWVXC8-4",
+      "value": "CfDJ8HoC74PQZyFJhEfrdx4Mk0MJpWHaCTVdGDt77xViSTCCgeordciFZSXp_M-zrFj7F6klAiQltYQ9hvF4nuitDGsCiNJuXqyNxuqgI77UKu5DQEuENmhI7CY0QY6F6Jf0ESLek3-OaBxYHmTDbvUAFdg",
+      "domain": "test.jobtrain.co.uk",
+      "path": "/voyagecare",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+      "value": "CfDJ8HoC74PQZyFJhEfrdx4Mk0OlDslizvnDDtSDHmsZp4z9cywNwX6-ZNP66gEPeQ1eI5nI5pDjqDhXQWwuKu1_gss0XNItxUYy7HHL65G1S0lcJhtV1UYLFn6GSW7c1PE5dR0d7PGb-karFIvycbetXCs",
+      "domain": "test.jobtrain.co.uk",
+      "path": "/voyagecare",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
       "name": "_GRECAPTCHA",
-      "value": "09AKhCRwizLBXpFuXcwqKXDOpQHmCTdAzJwa70UWngp_jS22J7QuKxRLOwCxbwxiehDUOx4rkSPT2SDGmh48w_P2I",
+      "value": "09AKhCRwj1T_mpLHvSLwUz8kmnwoIjg3y44d7ggC2XYq-ZgbtiU3EgYQ-7ZrGfBCKHZSVyqAjlddjRFZS2gtIWIGU",
       "domain": "www.google.com",
       "path": "/recaptcha",
-      "expires": 1788034842.262367,
+      "expires": 1788080016.240987,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
@@ -101,18 +121,8 @@
       "sameSite": "Lax"
     },
     {
-      "name": "UniqueUserKey",
-      "value": "448b5aa4-9b25-4093-9482-aad49bfcbc03",
-      "domain": "test.jobtrain.co.uk",
-      "path": "/",
-      "expires": -1,
-      "httpOnly": true,
-      "secure": true,
-      "sameSite": "Lax"
-    },
-    {
       "name": "jt.candidate.Session",
-      "value": "CfDJ8HoC74PQZyFJhEfrdx4Mk0PjX7rXOKAwNaNoWAZ4n46g%2FLd%2BJVwMI7op6NldFY6huoUvAofDIdLKq9DfK837hL4lz1wBt%2FzRyDY5j8NZTFP3xw7varBUwjxLY1yz0Um4dB7G%2BkJEqVaQhvfIAtsca8EyieZ4O51mC8%2B9FdqVhlMq",
+      "value": "CfDJ8HoC74PQZyFJhEfrdx4Mk0PXfGpxEuzGFTaO%2BDOK%2FEYxYmcQNwsUrWj12o8JMF8OtaKE5m0U%2FCrZGuZ70XOfsQinM5b74%2BfcEpGbqi0IM0lxghS318LAbyWM9Spz4RBIFH5F%2B%2FBPFClqAiF2UkcqtW5QQ4EtUYlog7jB2n7N7QMQ",
       "domain": "test.jobtrain.co.uk",
       "path": "/",
       "expires": -1,
@@ -122,10 +132,10 @@
     },
     {
       "name": "ai_session",
-      "value": "Wqut0EwoslXIqAQ2op5c0X|1772478598831|1772482843236",
+      "value": "chF6zLg7z9Nd7sgQRx17Jr|1772532206738|1772533477266",
       "domain": "test.jobtrain.co.uk",
       "path": "/",
-      "expires": 1772484643.236253,
+      "expires": 1772535277.267365,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
@@ -137,7 +147,7 @@
       "localStorage": [
         {
           "name": "_grecaptcha",
-          "value": "09AKhCRwjeRKNwrf5ebCMpEL-a5lLxHbsHgUdppcF2xDia92QdErXrTmxgMUlWrOuTppQq87MoHZWDTH9n2_R7xM9KRYHXvD9f-mqZYDvAbCN8CI_FIZfsFT3zNCDMe3_Z"
+          "value": "09AKhCRwhyv36bZ5O43oYNVadH4xI6VfqLCLOVD2sLKkcAS-UCFEPlFmusdtxKlD32Ur8jLW9NAWjIAnqASRwtGGnDKlKlQQ_ntI2zNQeUBDxOyxPxWPzajwATFmVprI2U"
         }
       ]
     },
@@ -150,7 +160,7 @@
         },
         {
           "name": "rc::f",
-          "value": "0aANbTVHweC_sWSTTI5ZuWmiNoolZ3buRIgZzwGeZ6gGpLz1q-Ymgq7G-yWRcCoNq5YJP1DQw"
+          "value": "0aANbTVHx8eJuO9S55Uey0jubAoIg6AFCLSgvq_YjwNCn_2Bzxbfri4T0wWwi4LeKtLeIgYSg"
         }
       ]
     }

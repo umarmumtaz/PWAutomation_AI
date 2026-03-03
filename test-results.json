@@ -61,81 +61,72 @@
   },
   "suites": [
     {
-      "title": "applyJobFlow.spec.ts",
-      "file": "applyJobFlow.spec.ts",
+      "title": "Login.spec.ts",
+      "file": "Login.spec.ts",
       "column": 0,
       "line": 0,
-      "specs": [
+      "specs": [],
+      "suites": [
         {
-          "title": "@smoke Apply job end-to-end",
-          "ok": false,
-          "tags": [
-            "smoke"
-          ],
-          "tests": [
+          "title": "Run all the test cases",
+          "file": "Login.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
             {
-              "timeout": 180000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "chromium",
-              "projectName": "chromium",
-              "results": [
+              "title": "@smoke login with valid email, and password",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
                 {
-                  "workerIndex": 9,
-                  "parallelIndex": 0,
-                  "status": "failed",
-                  "duration": 46713,
-                  "error": {
-                    "message": "Error: locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByTestId('a-home-link')\u001b[22m\n",
-                    "stack": "Error: locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByTestId('a-home-link')\u001b[22m\n\n    at D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\applyJobFlow.spec.ts:144:41",
-                    "location": {
-                      "file": "D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\applyJobFlow.spec.ts",
-                      "column": 41,
-                      "line": 144
-                    },
-                    "snippet": "\u001b[0m \u001b[90m 142 |\u001b[39m   \u001b[36mconst\u001b[39m wizard \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mApplyWizardPage\u001b[39m(page)\u001b[33m;\u001b[39m\n \u001b[90m 143 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 144 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'a-home-link'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 145 |\u001b[39m   \u001b[36mawait\u001b[39m wizard\u001b[33m.\u001b[39m\u001b[33mJobApplyPage\u001b[39m\u001b[33m.\u001b[39mclickonJob()\u001b[33m;\u001b[39m\n \u001b[90m 146 |\u001b[39m   \u001b[36mawait\u001b[39m wizard\u001b[33m.\u001b[39m\u001b[33mJobApplyPage\u001b[39m\u001b[33m.\u001b[39mapplyJob()\u001b[33m;\u001b[39m\n \u001b[90m 147 |\u001b[39m\u001b[0m"
-                  },
-                  "errors": [
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
                     {
-                      "location": {
-                        "file": "D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\applyJobFlow.spec.ts",
-                        "column": 41,
-                        "line": 144
-                      },
-                      "message": "Error: locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByTestId('a-home-link')\u001b[22m\n\n\n\u001b[0m \u001b[90m 142 |\u001b[39m   \u001b[36mconst\u001b[39m wizard \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mApplyWizardPage\u001b[39m(page)\u001b[33m;\u001b[39m\n \u001b[90m 143 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 144 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'a-home-link'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 145 |\u001b[39m   \u001b[36mawait\u001b[39m wizard\u001b[33m.\u001b[39m\u001b[33mJobApplyPage\u001b[39m\u001b[33m.\u001b[39mclickonJob()\u001b[33m;\u001b[39m\n \u001b[90m 146 |\u001b[39m   \u001b[36mawait\u001b[39m wizard\u001b[33m.\u001b[39m\u001b[33mJobApplyPage\u001b[39m\u001b[33m.\u001b[39mapplyJob()\u001b[33m;\u001b[39m\n \u001b[90m 147 |\u001b[39m\u001b[0m\n\u001b[2m    at D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\applyJobFlow.spec.ts:144:41\u001b[22m"
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 24125,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-03T10:27:54.127Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\Login-Run-all-the-test-cas-dc9d8-th-valid-email-and-password-chromium\\test-finished-1.png"
+                        }
+                      ]
                     }
                   ],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-03-02T20:20:00.027Z",
-                  "annotations": [],
-                  "attachments": [],
-                  "errorLocation": {
-                    "file": "D:\\PlaywrightAutomation\\PWAutomationAI\\tests\\applyJobFlow.spec.ts",
-                    "column": 41,
-                    "line": 144
-                  }
+                  "status": "expected"
                 }
               ],
-              "status": "unexpected"
+              "id": "42af536f2c838a173cb6-6b0820396d7546068721",
+              "file": "Login.spec.ts",
+              "line": 11,
+              "column": 7
             }
-          ],
-          "id": "4f5c862c04026507556c-1d96d0a856f2de168fb6",
-          "file": "applyJobFlow.spec.ts",
-          "line": 129,
-          "column": 5
+          ]
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-03-02T20:19:58.211Z",
-    "duration": 49206.39099999517,
-    "expected": 0,
+    "startTime": "2026-03-03T10:27:52.523Z",
+    "duration": 26400.757000000216,
+    "expected": 1,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 0,
     "flaky": 0
   }
 }

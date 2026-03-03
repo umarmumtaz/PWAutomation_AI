@@ -11,7 +11,8 @@ test.describe ('Run all the test cases - Register', () => {
 test.beforeEach(async ({ page }) => {
   await prepareHome(page);
 });
-test("@smoke Register an Account", async ({ page }) => {
+//register scenarions - regression
+test("@regression Register an Account", async ({ page }) => {
   const registerFromLoginPage = new LoginPage(page); 
   await registerFromLoginPage.clickOnSignInButton();
 
@@ -43,23 +44,22 @@ test("@smoke Register an Account", async ({ page }) => {
   await page.waitForLoadState('networkidle');
   await page.locator('#continue').click();
   
-  
- // await page.locator('#loggedInCandidateName').click();
- // await page.getByRole('link', { name: 'Logout' }).click();
+  await page.locator('#loggedInCandidateName').click();
+  await page.getByRole('link', { name: 'Logout' }).click();
 
   await page.context().storageState({ path: 'storage/state.json' });
   saveUserData(emailForRegistration, passwordForRegistration);
 
 });
 
-// Additional registration behaviors
+
 
 test("@regression should not enable register when password is too weak", async ({ page }) => {
   const login = new LoginPage(page);
   await login.clickOnSignInButton();
   const registerPage = new RegisterPage(page);
   await registerPage.clickOnHaveNotAccountButton();
-  await registerPage.validRegisterCredentials();
+  await registerPage.verifyTheRegister1PageTitle();
   await page.getByTestId("txt-create-a-password").fill("123");
   const registerBtn = page.locator('#register');
   await expect(registerBtn).toBeDisabled();

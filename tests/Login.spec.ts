@@ -7,17 +7,18 @@ test.describe('Run all the test cases', () => {
 test.beforeEach(async ({ page }) => {
   await prepareHome(page);
   });
-
+//login scenarios - regression/smoke
   test("@smoke login with valid email, and password", async ({ page }) => {
     const loginPage = new LoginPage(page);
     await loginPage.clickOnSignInButton();
-    await loginPage.enterinValidEmail("nanncykevin+9999@gmail.com")
+    await loginPage.enterinValidEmail("nanncykevin@gmail.com")
     await loginPage.enterinValidPassword("Testing@123");
     await loginPage.clickOnLoginButton();
     await page.waitForLoadState('networkidle');
+    await page.getByRole('button', { name: 'Close' })
     await loginPage.verifytheJobListingTitle();
-await page.locator('#loggedInCandidateName').click();
-await page.getByRole('link', { name: 'Logout' }).click();
+    await page.locator('#loggedInCandidateName').click();
+    await page.getByRole('link', { name: 'Logout' }).click();
   });
 
   test("@regression login with invalid email, and password", async ({ page }) => {
