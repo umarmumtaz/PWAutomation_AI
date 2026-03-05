@@ -1,5 +1,6 @@
 // pages/JobApplyPage.ts
 import { Page, expect } from '@playwright/test';
+import { getTestFile } from '../utils/fileUtils';      
 
 export default class AboutYouPage {
   constructor(private page: Page) {}
@@ -9,7 +10,7 @@ export default class AboutYouPage {
   }
 
 async fillPersonalDetails() {
-    await this.page.getByTestId('select-txtTITLE').selectOption('Mr');
+  await this.page.getByTestId('select-txtTITLE').selectOption('Mr');
   await this.page.getByTestId('txt-txtCURRENTADDRESS').click();
   await this.page.getByTestId('txt-txtCURRENTADDRESS').fill('test');
   await this.page.getByTestId('txt-txtCITYTOWN').click();
@@ -31,10 +32,13 @@ async uploadCV() {
   .setInputFiles('D:/PlaywrightAutomation/PWAutomationAI/resume testting.doc');
 
     }
-async   updateEmployment() { 
 
- await  this.page.getByTestId('btn-ref-edit-0').click();
 
+
+    
+async  updateEmployment() { 
+
+  await  this.page.getByTestId('btn-ref-edit-0').click();
   await this.page.getByTestId('div-equal-opportunities-form-section').getByRole('textbox', { name: 'Industry' }).click();
   await this.page.getByTestId('div-equal-opportunities-form-section').getByRole('textbox', { name: 'Industry' }).fill('test');
   await this.page.getByRole('textbox', { name: 'Address', exact: true }).click();
@@ -123,6 +127,21 @@ await this.page.getByRole('button', { name: 'Save', exact: true }).click();
 
 
 }
+
+async uploadCVdebugging(fileName: string) {
+
+    // Upload file from resources folder
+    await this.page.getByText('Choose file')
+      .setInputFiles(getTestFile('resume.doc'));
+
+    // Handle optional popup
+    const closeButton = this.page.getByRole('button', { name: 'Close' });
+    if (await closeButton.isVisible()) {
+      await closeButton.click();
+    }
+    }
+
+
 
 
 

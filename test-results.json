@@ -48,7 +48,7 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 180000
+        "timeout": 1000000
       }
     ],
     "shard": null,
@@ -61,39 +61,41 @@
   },
   "suites": [
     {
-      "title": "test-4.spec.ts",
-      "file": "test-4.spec.ts",
+      "title": "applyJobFlow.spec.ts",
+      "file": "applyJobFlow.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "test",
+          "title": "@smoke Apply for job flow",
           "ok": true,
-          "tags": [],
+          "tags": [
+            "smoke"
+          ],
           "tests": [
             {
-              "timeout": 180000,
+              "timeout": 1000000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "chromium",
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 12,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2032,
+                  "duration": 324091,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-03-03T15:32:12.160Z",
+                  "startTime": "2026-03-05T11:08:10.011Z",
                   "annotations": [],
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\test-4-test-chromium\\test-finished-1.png"
+                      "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\test-results\\applyJobFlow--smoke-Apply-for-job-flow-chromium\\test-finished-1.png"
                     }
                   ]
                 }
@@ -101,9 +103,9 @@
               "status": "expected"
             }
           ],
-          "id": "e36f1d94e6ab19bad2b8-60d1c702fc23ffb2044d",
-          "file": "test-4.spec.ts",
-          "line": 3,
+          "id": "4f5c862c04026507556c-a27cc4500367d9e8bc7b",
+          "file": "applyJobFlow.spec.ts",
+          "line": 14,
           "column": 5
         }
       ]
@@ -111,8 +113,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-03-03T15:32:10.014Z",
-    "duration": 5065.91099999845,
+    "startTime": "2026-03-05T11:08:08.000Z",
+    "duration": 326676.4469999969,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

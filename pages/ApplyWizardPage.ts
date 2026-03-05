@@ -27,4 +27,8 @@ constructor(public page: Page) {
     this.declarationPage = new DeclarationPage(page);   
 
 }
+//upload cv file from the repo to the application
+async uploadCV(fileName: string) {
+    await this.aboutYouPage.uploadCVdebugging(fileName);
+}
 };

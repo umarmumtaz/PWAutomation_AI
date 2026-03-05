@@ -315,6 +315,103 @@ async fillPersonalDetails(data) {
 }
 ```
 
+
+This snippet is a **Node.js utility function** that saves user data (email + password) into a JSON file. Let’s break it down step by step:
+
+---------------------------------------------------------------------
+
+## 📌 Imports
+```ts
+import fs from 'fs';
+import path from 'path';
+```
+- `fs` → Node’s **File System** module, lets you read/write files.
+- `path` → Node’s **Path** module, helps build file paths in a cross‑platform way.
+
+---
+
+## 📌 File Path Setup
+```ts
+const usersFilePath = path.resolve(__dirname, '../storage/users.json');
+```
+- `__dirname` → the directory of the current file.
+- `path.resolve` → builds an **absolute path** to `../storage/users.json`.
+- So if your file is in `src/utils/saveUser.ts`, this points to `src/storage/users.json`.
+
+---
+
+## 📌 Function Definition
+```ts
+export function saveUserData(email: string, password: string) {
+  let users: { email: string; password: string }[] = [];
+```
+- Defines a function `saveUserData` that takes `email` and `password`.
+- Initializes an empty array `users`.
+
+---
+
+## 📌 Read Existing File
+```ts
+if (fs.existsSync(usersFilePath)) {
+  const data = fs.readFileSync(usersFilePath, 'utf-8');
+  try {
+    users = JSON.parse(data);
+  } catch {
+    users = [];
+  }
+}
+```
+- Checks if `users.json` already exists.
+- If yes, reads it as text (`utf-8`).
+- Tries to parse JSON → loads existing users.
+- If parsing fails (corrupt file), resets to empty array.
+
+---
+
+## 📌 Add New User
+```ts
+users.push({ email, password });
+```
+- Adds the new user object to the array.
+
+---
+
+## 📌 Write Back to File
+```ts
+fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+```
+- Converts the array back to JSON string.
+- `null, 2` → pretty‑prints with 2 spaces indentation.
+- Writes it back to `users.json`.
+
+---
+
+## ✅ Summary
+This function:
+1. Reads existing `users.json` (if present).
+2. Parses it into an array.
+3. Adds a new `{ email, password }` entry.
+4. Saves the updated array back to disk.
+
+-------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+⚠️ **Note:** This is fine for demos, but storing passwords in plain JSON is insecure. In real apps, you’d hash passwords (e.g., with `bcrypt`) before saving.
+
+---
+
+👉 Umar, since you’re building automation workflows, do you want me to show you how to **refactor this into a reusable utility with password hashing** so it’s closer to production‑ready best practices?
+
+
+
+
+
+
 ---
 
 ### AFTER (enhanced version)
@@ -550,3 +647,135 @@ If you want, next I can show:
 * How to store JSON files per job ID
 
 You're thinking like a test architect now 👌
+
+
+
+
+-----------------
+Timeout 
+
+
+Here’s a config pattern you can use in playwright.config.ts that balances global timeouts with per step waits. This way you don’t rely on a huge timeout everywhere, but still handle slow UI gracefully:
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  testDir: './tests',
+  // Run tests sequentially if needed
+  workers: 1,
+
+  // Global timeout for each test (e.g., 2 minutes)
+  timeout: 120000,
+
+  use: {
+    // Default navigation timeout (e.g., 30s)
+    navigationTimeout: 30000,
+
+    // Default action timeout (click, fill, etc.)
+    actionTimeout: 10000,
+
+    // Capture trace on failure for debugging
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+  },
+
+  reporter: [['list'], ['html', { outputFolder: 'playwright-report' }]],
+});
+________________________________________
+📌 How This Pattern Works
+•	Global test timeout (timeout: 120000) → Each test can run up to 2 minutes.
+•	Navigation timeout (navigationTimeout: 30000) → Page loads must finish within 30s.
+•	Action timeout (actionTimeout: 10000) → Clicks, fills, etc. must succeed within 10s.
+•	Trace/screenshot/video → Automatically collected on failures for debugging.
+________________________________________
+📌 Example Usage in Tests
+Instead of relying on the global timeout, wrap critical steps with explicit waits:
+await page.goto('https://yourapp.com', { timeout: 60000 }); // custom per-step timeout
+await page.waitForSelector('[data-test="a-sign-in"]', { state: 'visible', timeout: 5000 });
+await page.getByTestId('a-sign-in').click();
+This way:
+•	Navigation gets more time (60s).
+•	Element waits are explicit (5s).
+•	The whole test won’t hang for 16 minutes unnecessarily.
+________________________________________
+✅ Best practice:
+•	Keep global timeout moderate (1–2 minutes).
+•	Use per step timeouts for slow actions.
+•	Collect traces/screenshots for debugging.
+•	Run sequential (workers: 1) only if tests interfere; otherwise allow parallel for speed.
+________________________________________
+👉 Umar, do you want me to also show you how to parameterize timeouts per environment (e.g., shorter in local dev, longer in Jenkins CI) so your pipeline doesn’t fail due to slower builds?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Great question — these different timeouts in Playwright can be confusing at first. Let’s break them down clearly:
+________________________________________
+📌 Types of Timeouts in Playwright
+1. Global Test Timeout (timeout)
+•	Applies to the entire test function.
+•	If the test doesn’t finish within this time, Playwright aborts it.
+•	Example: 
+•	test('long workflow', async ({ page }) => {
+•	  // whole test must finish within 2 minutes
+•	}, { timeout: 120000 });
+________________________________________
+2. Navigation Timeout (navigationTimeout)
+•	Applies to page navigation actions like page.goto(), page.reload(), page.waitForURL().
+•	If the page doesn’t load within this time, Playwright throws an error.
+•	Example: 
+•	await page.goto('https://yourapp.com', { timeout: 60000 });
+________________________________________
+3. Action Timeout (actionTimeout)
+•	Applies to user actions like click, fill, setInputFiles, etc.
+•	If the element isn’t ready or the action can’t complete within this time, Playwright fails.
+•	Example: 
+•	await page.getByRole('button', { name: 'Submit' }).click({ timeout: 5000 });
+________________________________________
+4. Trace Timeout (trace)
+•	Not a timeout in the same sense — it’s a debugging tool.
+•	trace: 'on-first-retry' means Playwright records a trace (screenshots, DOM snapshots, network logs) if the test fails and retries.
+•	Helps you debug why a test hung or failed.
+________________________________________
+📌 What’s Best for Large Data / Long Workflows
+If you have lots of data and workflows that can take time:
+•	Global timeout: Keep reasonable (e.g., 2–3 minutes). Don’t set 16 minutes unless absolutely necessary — it hides real issues.
+•	Navigation timeout: Increase if your app loads slowly (e.g., 60s).
+•	Action timeout: Keep short (5–10s). If an element isn’t ready in that time, something’s wrong.
+•	Trace: Always enable on failure — it’s your best debugging tool.
+________________________________________
+✅ Recommended Config Pattern for Your Case
+export default defineConfig({
+  timeout: 180000, // 3 minutes per test
+  use: {
+    navigationTimeout: 60000, // 1 minute for page loads
+    actionTimeout: 10000,     // 10s for clicks/fills
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+  },
+});
+________________________________________
+📌 Why This Is Better Than 16 Minutes Global
+•	Keeps tests fast and failures visible.
+•	Long workflows still have enough time (3 minutes).
+•	Slow pages get extra breathing room (60s).
+•	Actions fail quickly if selectors are wrong (10s).
+•	Debugging is easier with trace/screenshot/video.
+________________________________________
+👉 Umar, since you’re running multi tab job application flows with large data, do you want me to show you how to wrap critical steps (like CV upload or registration) with custom per step timeouts so you don’t need to inflate the global timeout but still handle heavy data gracefully?
+
