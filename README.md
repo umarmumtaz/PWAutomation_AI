@@ -393,12 +393,49 @@ This function:
 3. Adds a new `{ email, password }` entry.
 4. Saves the updated array back to disk.
 
+
 -------------------------------------------------------------------------------------------------
+async uploadCV(fileName: string) {
+    await this.aboutYouPage.uploadCVdebugging(fileName);
+}
+
+- This is a wrapper method that delegates to another method (uploadCVdebugging) on aboutYouPage.
+- It means when you call uploadCV("resume.doc"), it internally calls uploadCVdebugging("resume.doc").
+
+****ll verify
+- It uses getTestFile('resume.doc') to resolve the file path from your repo’s resources (or docs) folder.
+- Issue: You’re ignoring the fileName parameter and hard‑coding 'resume.doc'. Better to use getTestFile(fileName) so it’s flexible
+
+async uploadCV() {
+    await this.page.getByText('Choose file').click();
+    await this.page.getByTestId('label-choose-cv-file-0')
+      .setInputFiles('D:/PlaywrightAutomation/PWAutomationAI/resume testting.doc');
+}
+- This is another upload method, but it uses a hard‑coded absolute path (D:/...).
+- This will break in CI/CD (Jenkins, GitHub Actions) because those environments don’t have your personal D: drive.
+- You should replace this with getTestFile(fileName).
+
+
+import path from 'path';
+
+// upload resume file from the repo to the application
+export function getTestFile(fileName: string) {
+  // Resolves file path inside repo - uses project root/docs folder
+  return path.resolve(process.cwd(), 'docs', fileName);
+}
+- process.cwd() = the current working directory (your project root).
+- 'docs' = folder inside your repo where you keep test files.
+- fileName = the actual file name (e.g., resume.doc).
+- So if your repo is at D:\PlaywrightAutomation\PWAutomationAI, this resolves to:
+D:\PlaywrightAutomation\PWAutomationAI\docs\resume.doc
+- ✅ This is portable and works in CI/CD because Jenkins will also clone the repo and have the docs folder.
 
 
 
 
 
+
+**************************************************
 
 
 ⚠️ **Note:** This is fine for demos, but storing passwords in plain JSON is insecure. In real apps, you’d hash passwords (e.g., with `bcrypt`) before saving.
@@ -652,7 +689,7 @@ You're thinking like a test architect now 👌
 
 
 -----------------
-Timeout 
+                                                                  Timeout 
 
 
 Here’s a config pattern you can use in playwright.config.ts that balances global timeouts with per step waits. This way you don’t rely on a huge timeout everywhere, but still handle slow UI gracefully:
@@ -723,7 +760,7 @@ ________________________________________
 
 
 
-Great question — these different timeouts in Playwright can be confusing at first. Let’s break them down clearly:
+
 ________________________________________
 📌 Types of Timeouts in Playwright
 1. Global Test Timeout (timeout)

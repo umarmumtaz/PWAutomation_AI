@@ -24,7 +24,8 @@ test("@smoke Apply for job flow", async ({ page }) => {
   await applyWizardPage.JobApplyPage.applyJob();
   await applyWizardPage.JobApplyPage.verifyTheJobTitle();
   const testData = { cvFile: 'resume.doc' };
-  await applyWizardPage.aboutYouPage.uploadCVdebugging(testData.cvFile);
+  await applyWizardPage.aboutYouPage.uploadCV(testData.cvFile);
+
   await page.waitForLoadState("networkidle");
   await applyWizardPage.aboutYouPage.updateEmployment();
   await applyWizardPage.aboutYouPage.deleteEmployment();

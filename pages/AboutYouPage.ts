@@ -26,12 +26,12 @@ async fillPersonalDetails() {
   await this.page.getByTestId('txt-txtTERMCOUNTY').fill('test');
 
 }
-async uploadCV() {
-    await this.page.getByText('Choose file').click();
-   await this.page.getByTestId('label-choose-cv-file-0')
-  .setInputFiles('D:/PlaywrightAutomation/PWAutomationAI/resume testting.doc');
+// async uploadCV() {
+//     await this.page.getByText('Choose file').click();
+//    await this.page.getByTestId('label-choose-cv-file-0')
+//   .setInputFiles('D:/PlaywrightAutomation/PWAutomationAI/resume testting.doc');
 
-    }
+//     }
 
 
 
@@ -128,21 +128,29 @@ await this.page.getByRole('button', { name: 'Save', exact: true }).click();
 
 }
 
-async uploadCVdebugging(fileName: string) {
+// async uploadCVdebugging(fileName: string) {
 
-    // Upload file from resources folder
-    await this.page.getByText('Choose file')
-      .setInputFiles(getTestFile('resume.doc'));
+//     // Upload file from resources folder
+//     await this.page.getByText('Choose file')
+//       .setInputFiles(getTestFile('resume.doc'));
 
-    // Handle optional popup
+//     // Handle optional popup
+//     const closeButton = this.page.getByRole('button', { name: 'Close' });
+//     if (await closeButton.isVisible()) {
+//       await closeButton.click();
+//     }
+//     }
+
+  async uploadCV(fileName: string) {
+    await this.page.getByTestId('label-choose-cv-file-0')
+      .setInputFiles(getTestFile(fileName));
+
     const closeButton = this.page.getByRole('button', { name: 'Close' });
     if (await closeButton.isVisible()) {
       await closeButton.click();
     }
-    }
-
-
-
-
+  }
 
 }
+
+
