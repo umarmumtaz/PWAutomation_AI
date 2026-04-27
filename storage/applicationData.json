@@ -1,0 +1,16 @@
+{
+  "personalDetails": {
+    "address": "test",
+    "city": "test",
+    "county": "test",
+    "postcode": "332211",
+    "relocate": "Yes"
+  },
+
+    "employmentDetails": {
+        "currentEmployer": "test",
+        "jobTitle": "test",
+        "startDate": "2023-01-01",
+        "endDate": "2023-12-31"
+    }
+}

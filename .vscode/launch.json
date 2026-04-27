@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "node",
+            "name": "debug AboutYouPage.ts",
+            "request": "launch",
+            "args": [],
+            "runtimeArgs": [
+                "-r",
+                "ts-node/register"
+            ],
+            "program": "d:\\PlaywrightAutomation\\PWAutomationAI\\pages\\AboutYouPage.ts"
+        }
+    ]
+}
