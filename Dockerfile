@@ -12,6 +12,6 @@ RUN npm ci
 
 # Copy the rest of your project
 COPY . .
-RUN npx playwright install --with-deps
+#RUN npx playwright install --with-deps
 # Default command (can be overridden in Jenkins pipeline)
 CMD ["npx", "playwright", "test"]
