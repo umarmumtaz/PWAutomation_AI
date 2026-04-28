@@ -1,7 +1,9 @@
 # Use official Playwright image with browsers preinstalled
 # FROM mcr.microsoft.com/playwright:v1.45.0-jammy    //its heavy image than focal
-FROM mcr.microsoft.com/playwright:v1.59.1-focal
+#FROM mcr.microsoft.com/playwright:v1.59.1-focal
 # Set working directory inside container
+FROM mcr.microsoft.com/playwright:v1.59.1-jammy
+
 WORKDIR /app
 
 # Copy dependency files first (better caching)
