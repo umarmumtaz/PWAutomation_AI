@@ -34,47 +34,42 @@ pipeline {
             }
         }
 
-        // ✅ Only build if tests pass
         stage('Build Docker Image') {
             when {
                 expression { currentBuild.result == null }
             }
             steps {
-                bat "docker build -t %DOCKER_IMAGE%:${BUILD_NUMBER} ."
-                bat "docker tag %DOCKER_IMAGE%:${BUILD_NUMBER} %DOCKER_IMAGE%:latest"
+                bat "docker build -t ${DOCKER_IMAGE}:${BUILD_NUMBER} ."
+                bat "docker tag ${DOCKER_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:latest"
             }
         }
 
-        // ✅ Secure Docker login
         stage('Push Docker Image') {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'dockerhub-creds',
-                usernameVariable: 'DOCKER_USER',
-            passwordVariable: 'DOCKER_PASS'
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
                 )]) {
-
                     bat """
                     echo %DOCKER_PASS% | docker login -u %DOCKER_USER% --password-stdin
-                    docker push %DOCKER_IMAGE%:${BUILD_NUMBER}
-                    docker push %DOCKER_IMAGE%:latest
+                    docker push ${DOCKER_IMAGE}:${BUILD_NUMBER}
+                    docker push ${DOCKER_IMAGE}:latest
                     """
                 }
             }
         }
 
-        // ✅ OPTIONAL: Only if you want to validate container
         stage('Run Tests in Docker (Optional)') {
             steps {
-                bat "docker run --rm -e CI=true %DOCKER_IMAGE%:${BUILD_NUMBER}"
+                bat "docker run --rm -e CI=true ${DOCKER_IMAGE}:${BUILD_NUMBER}"
             }
         }
 
-        // ✅ Kubernetes Deployment
         stage('Deploy to Kubernetes') {
             steps {
                 bat """
-                kubectl set image deployment/pw-tests pw-tests=%DOCKER_IMAGE%:${BUILD_NUMBER}
+                kubectl set image deployment/pw-tests pw-tests=${DOCKER_IMAGE}:${BUILD_NUMBER}
                 kubectl rollout status deployment/pw-tests
                 """
             }
@@ -84,7 +79,6 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
-
             publishHTML([
                 reportDir: 'playwright-report',
                 reportFiles: 'index.html',
