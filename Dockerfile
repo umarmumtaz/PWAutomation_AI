@@ -1,6 +1,6 @@
 # Use official Playwright image with browsers preinstalled
 # FROM mcr.microsoft.com/playwright:v1.45.0-jammy    //its heavy image than focal
-FROM mcr.microsoft.com/playwright:v1.45.0-focal
+FROM mcr.microsoft.com/playwright:v1.57.0-focal
 # Set working directory inside container
 WORKDIR /app
 
