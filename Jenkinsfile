@@ -12,9 +12,16 @@ pipeline {
 
     options {
         timeout(time: 60, unit: 'MINUTES')
+        timestamps()
     }
 
     stages {
+
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
+        }
 
         stage('Install Dependencies') {
             steps {
@@ -28,7 +35,7 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
+        stage('Run Playwright Tests') {
             steps {
                 bat 'npx playwright test tests/Login --reporter=html --workers=2 --retries=1'
             }
@@ -36,49 +43,66 @@ pipeline {
 
         stage('Build Docker Image') {
             when {
-                expression { currentBuild.result == null }
+                expression {
+                    currentBuild.currentResult == 'SUCCESS' || currentBuild.currentResult == null
+                }
             }
+
             steps {
-                bat "docker build -t ${DOCKER_IMAGE}:${BUILD_NUMBER} ."
-                bat "docker tag ${DOCKER_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:latest"
+                bat "docker build -t %DOCKER_IMAGE%:%BUILD_NUMBER% ."
+                bat "docker tag %DOCKER_IMAGE%:%BUILD_NUMBER% %DOCKER_IMAGE%:latest"
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'dockerhub-creds',
-                    usernameVariable: 'DOCKER_USER',
-                    passwordVariable: 'DOCKER_PASS'
-                )]) {
+
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'dockerhub-creds',
+                        usernameVariable: 'DOCKER_USER',
+                        passwordVariable: 'DOCKER_PASS'
+                    )
+                ]) {
+
                     bat """
-                    echo %DOCKER_PASS% | docker login -u %DOCKER_USER% --password-stdin
-                    docker push ${DOCKER_IMAGE}:${BUILD_NUMBER}
-                    docker push ${DOCKER_IMAGE}:latest
+                    docker login -u %DOCKER_USER% -p %DOCKER_PASS%
+                    docker push %DOCKER_IMAGE%:%BUILD_NUMBER%
+                    docker push %DOCKER_IMAGE%:latest
+                    docker logout
                     """
                 }
             }
         }
 
-        stage('Run Tests in Docker (Optional)') {
+        stage('Run Docker Container') {
             steps {
-                bat "docker run --rm -e CI=true ${DOCKER_IMAGE}:${BUILD_NUMBER}"
+                bat "docker run --rm -e CI=true %DOCKER_IMAGE%:%BUILD_NUMBER%"
             }
         }
 
+        // OPTIONAL
+        // Uncomment only when Kubernetes cluster is configured
+
+        /*
         stage('Deploy to Kubernetes') {
             steps {
+
                 bat """
-                kubectl set image deployment/pw-tests pw-tests=${DOCKER_IMAGE}:${BUILD_NUMBER}
+                kubectl set image deployment/pw-tests pw-tests=%DOCKER_IMAGE%:%BUILD_NUMBER%
                 kubectl rollout status deployment/pw-tests
                 """
             }
         }
+        */
     }
 
     post {
+
         always {
+
             archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
+
             publishHTML([
                 reportDir: 'playwright-report',
                 reportFiles: 'index.html',
@@ -96,12 +120,15 @@ pipeline {
         failure {
             echo '❌ Pipeline Failed'
         }
+
+        cleanup {
+            bat 'docker system prune -af'
+        }
     }
 }
 
 
-
-
+//updated
 /*
 
 //Purpose: Build and run the image locally, without Docker Hub.
