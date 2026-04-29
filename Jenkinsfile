@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -7,12 +8,10 @@ pipeline {
 
     environment {
         CI = "true"
-        //DOCKER_IMAGE = "infodocker7410/pw-tests"
     }
 
     options {
-        timeout(time: 60, unit: 'MINUTES')
-        timestamps()
+        timeout(time: 30, unit: 'MINUTES')
     }
 
     stages {
@@ -35,70 +34,60 @@ pipeline {
             }
         }
 
-        stage('Run Playwright Tests') {
+        stage('Run Login Test Suite') {
             steps {
-                bat 'npx playwright test tests/Login --reporter=html'// --workers=2 --retries=1'
+                bat 'npx playwright test tests/Login --reporter=html'
             }
         }
 
         stage('Build Docker Image') {
-            // when {
-            //     expression {
-            //         currentBuild.currentResult == 'SUCCESS' || currentBuild.currentResult == null
-            //     }
-            // }
-
             steps {
-             bat "docker build -t infodocker7410/pw-tests:${BUILD_NUMBER} ."
+                bat "docker build -t infodocker7410/pw-tests:${BUILD_NUMBER} ."
                 bat "docker tag infodocker7410/pw-tests:${BUILD_NUMBER} infodocker7410/pw-tests:latest"
-            }
             }
         }
 
         stage('Push Docker Image') {
             steps {
 
-                withCredentials([usernamePassword(
-                    credentialsId: 'dockerhub-creds',
-                    usernameVariable: 'DOCKER_USER',
-                    passwordVariable: 'DOCKER_PASS'
-                )]) {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'dockerhub-creds',
+                        usernameVariable: 'DOCKER_USER',
+                        passwordVariable: 'DOCKER_PASS'
+                    )
+                ]) {
 
                     bat "docker login -u %DOCKER_USER% -p %DOCKER_PASS%"
 
                     bat "docker push infodocker7410/pw-tests:${BUILD_NUMBER}"
+
                     bat "docker push infodocker7410/pw-tests:latest"
                 }
             }
         }
 
-
-        stage('Run Docker Container') {
-            steps {
-                bat "docker run --rm -e CI=true %DOCKER_IMAGE%:%BUILD_NUMBER%"
-            }
-        }
-
-        // OPTIONAL
-        // Uncomment only when Kubernetes cluster is configured
-
-        
         stage('Deploy to Kubernetes') {
             steps {
 
-                   bat "kubectl set image deployment/pw-tests pw-tests=infodocker7410/pw-tests:${BUILD_NUMBER}"
+                bat """
+                kubectl set image deployment/pw-tests ^
+                pw-tests=infodocker7410/pw-tests:${BUILD_NUMBER}
+                """
 
-                bat "kubectl rollout status deployment/pw-tests"
+                bat 'kubectl rollout status deployment/pw-tests'
             }
         }
-        
     }
 
     post {
 
         always {
 
-            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
+            archiveArtifacts(
+                artifacts: 'playwright-report/**',
+                allowEmptyArchive: true
+            )
 
             publishHTML([
                 reportDir: 'playwright-report',
@@ -111,18 +100,16 @@ pipeline {
         }
 
         success {
-            echo '✅ Pipeline Successful'
+            echo '✅ Pipeline Passed Successfully'
         }
 
         failure {
             echo '❌ Pipeline Failed'
         }
-
-        cleanup {
-            bat 'docker system prune -af'
-        }
     }
 }
+
+
 
 
 //updated
