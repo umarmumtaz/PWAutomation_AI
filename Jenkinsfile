@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -15,7 +14,6 @@ pipeline {
     }
 
     stages {
-
         stage('Checkout Code') {
             steps {
                 checkout scm
@@ -36,7 +34,8 @@ pipeline {
 
         stage('Run Login Test Suite') {
             steps {
-                bat 'npx playwright test tests/Login --reporter=allure-playwright'
+                // Generate Allure results
+                bat 'npx playwright test tests/Login --reporter=line,allure-playwright'
             }
         }
 
@@ -49,7 +48,6 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-
                 withCredentials([
                     usernamePassword(
                         credentialsId: 'dockerhub-creds',
@@ -57,11 +55,8 @@ pipeline {
                         passwordVariable: 'DOCKER_PASS'
                     )
                 ]) {
-
                     bat "docker login -u %DOCKER_USER% -p %DOCKER_PASS%"
-
                     bat "docker push infodocker7410/pw-tests:${BUILD_NUMBER}"
-
                     bat "docker push infodocker7410/pw-tests:latest"
                 }
             }
@@ -69,56 +64,54 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-
                 bat 'kubectl apply -f k8s/deployment.yaml' 
                 bat 'kubectl apply -f k8s/service.yaml'
-
                 bat """
                 kubectl set image deployment/pw-tests ^
                 pw-tests=infodocker7410/pw-tests:${BUILD_NUMBER}
                 """
-
                 bat 'kubectl rollout status deployment/pw-tests'
             }
         }
     }
 
+    post {
+        always {
+            // Archive Playwright HTML report
+            archiveArtifacts(
+                artifacts: 'playwright-report/**',
+                allowEmptyArchive: true
+            )
 
+            publishHTML([
+                reportDir: 'playwright-report',
+                reportFiles: 'index.html',
+                reportName: 'Playwright Report',
+                keepAll: true,
+                alwaysLinkToLastBuild: true,
+                allowMissing: true
+            ])
 
-    
-post {
-    always {
-        // Archive Playwright HTML report
-        archiveArtifacts(
-            artifacts: 'playwright-report/**',
-            allowEmptyArchive: true
-        )
+            // Publish Allure report
+            allure([
+                includeProperties: false,
+                jdk: '',
+                results: [[path: 'allure-results']]
+            ])
+        }
 
-        publishHTML([
-            reportDir: 'playwright-report',
-            reportFiles: 'index.html',
-            reportName: 'Playwright Report',
-            keepAll: true,
-            alwaysLinkToLastBuild: true,
-            allowMissing: true
-        ])
+        success {
+            echo '✅ Pipeline Passed Successfully'
+        }
 
-        // Publish Allure report
-        allure([
-            includeProperties: false,
-            jdk: '',
-            results: [[path: 'allure-results']]
-        ])
-    }
-
-    success {
-        echo '✅ Pipeline Passed Successfully'
-    }
-
-    failure {
-        echo '❌ Pipeline Failed'
+        failure {
+            echo '❌ Pipeline Failed'
+        }
     }
 }
+
+
+
 
 
 
