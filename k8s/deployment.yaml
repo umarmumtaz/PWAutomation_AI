@@ -1,0 +1,28 @@
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: pw-tests
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: pw-tests
+
+  template:
+    metadata:
+      labels:
+        app: pw-tests
+
+    spec:
+      containers:
+        - name: pw-tests
+          image: infodocker7410/pw-tests:latest
+
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 3000

@@ -70,6 +70,9 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
 
+                bat 'kubectl apply -f k8s/deployment.yaml' 
+                bat 'kubectl apply -f k8s/service.yaml'
+
                 bat """
                 kubectl set image deployment/pw-tests ^
                 pw-tests=infodocker7410/pw-tests:${BUILD_NUMBER}
