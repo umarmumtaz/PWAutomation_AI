@@ -36,7 +36,7 @@ pipeline {
 
         stage('Run Login Test Suite') {
             steps {
-                bat 'npx playwright test tests/Login --reporter=html'
+                bat 'npx playwright test tests/Login --reporter=allure-playwright'
             }
         }
 
@@ -83,32 +83,40 @@ pipeline {
         }
     }
 
-    post {
 
-        always {
 
-            archiveArtifacts(
-                artifacts: 'playwright-report/**',
-                allowEmptyArchive: true
-            )
+    
+post {
+    always {
+        // Archive Playwright HTML report
+        archiveArtifacts(
+            artifacts: 'playwright-report/**',
+            allowEmptyArchive: true
+        )
 
-            publishHTML([
-                reportDir: 'playwright-report',
-                reportFiles: 'index.html',
-                reportName: 'Playwright Report',
-                keepAll: true,
-                alwaysLinkToLastBuild: true,
-                allowMissing: true
-            ])
-        }
+        publishHTML([
+            reportDir: 'playwright-report',
+            reportFiles: 'index.html',
+            reportName: 'Playwright Report',
+            keepAll: true,
+            alwaysLinkToLastBuild: true,
+            allowMissing: true
+        ])
 
-        success {
-            echo '✅ Pipeline Passed Successfully'
-        }
+        // Publish Allure report
+        allure([
+            includeProperties: false,
+            jdk: '',
+            results: [[path: 'allure-results']]
+        ])
+    }
 
-        failure {
-            echo '❌ Pipeline Failed'
-        }
+    success {
+        echo '✅ Pipeline Passed Successfully'
+    }
+
+    failure {
+        echo '❌ Pipeline Failed'
     }
 }
 
