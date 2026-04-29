@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         CI = "true"
-        DOCKER_IMAGE = "infodocker7410/pw-tests"
+        //DOCKER_IMAGE = "infodocker7410/pw-tests"
     }
 
     options {
@@ -37,43 +37,41 @@ pipeline {
 
         stage('Run Playwright Tests') {
             steps {
-                bat 'npx playwright test tests/Login --reporter=html --workers=2 --retries=1'
+                bat 'npx playwright test tests/Login --reporter=html'// --workers=2 --retries=1'
             }
         }
 
         stage('Build Docker Image') {
-            when {
-                expression {
-                    currentBuild.currentResult == 'SUCCESS' || currentBuild.currentResult == null
-                }
-            }
+            // when {
+            //     expression {
+            //         currentBuild.currentResult == 'SUCCESS' || currentBuild.currentResult == null
+            //     }
+            // }
 
             steps {
-                bat "docker build -t %DOCKER_IMAGE%:%BUILD_NUMBER% ."
-                bat "docker tag %DOCKER_IMAGE%:%BUILD_NUMBER% %DOCKER_IMAGE%:latest"
+             bat "docker build -t infodocker7410/pw-tests:${BUILD_NUMBER} ."
+                bat "docker tag infodocker7410/pw-tests:${BUILD_NUMBER} infodocker7410/pw-tests:latest"
+            }
             }
         }
 
         stage('Push Docker Image') {
             steps {
 
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'dockerhub-creds',
-                        usernameVariable: 'DOCKER_USER',
-                        passwordVariable: 'DOCKER_PASS'
-                    )
-                ]) {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-creds',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
 
-                    bat """
-                    docker login -u %DOCKER_USER% -p %DOCKER_PASS%
-                    docker push %DOCKER_IMAGE%:%BUILD_NUMBER%
-                    docker push %DOCKER_IMAGE%:latest
-                    docker logout
-                    """
+                    bat "docker login -u %DOCKER_USER% -p %DOCKER_PASS%"
+
+                    bat "docker push infodocker7410/pw-tests:${BUILD_NUMBER}"
+                    bat "docker push infodocker7410/pw-tests:latest"
                 }
             }
         }
+
 
         stage('Run Docker Container') {
             steps {
@@ -84,17 +82,16 @@ pipeline {
         // OPTIONAL
         // Uncomment only when Kubernetes cluster is configured
 
-        /*
+        
         stage('Deploy to Kubernetes') {
             steps {
 
-                bat """
-                kubectl set image deployment/pw-tests pw-tests=%DOCKER_IMAGE%:%BUILD_NUMBER%
-                kubectl rollout status deployment/pw-tests
-                """
+                   bat "kubectl set image deployment/pw-tests pw-tests=infodocker7410/pw-tests:${BUILD_NUMBER}"
+
+                bat "kubectl rollout status deployment/pw-tests"
             }
         }
-        */
+        
     }
 
     post {
