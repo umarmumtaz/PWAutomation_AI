@@ -96,7 +96,8 @@ pipeline {
             allure([
                 includeProperties: false,
                 jdk: '',
-                results: [[path: 'allure-results']]
+                results: [[path: 'allure-results']],
+                commandline: 'allure'   // must match the tool name you set
             ])
         }
 
