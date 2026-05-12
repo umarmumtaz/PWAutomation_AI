@@ -1,16 +1,47 @@
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
-const filePath = path.resolve(
-  __dirname,
-  "../test-data/applicationData.json"
+const applicationFolder = path.resolve(
+  process.cwd(),
+  'test-data',
+  'applications'
 );
 
-export function saveApplicationData(data: any) {
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+export function saveApplicationData(
+  data: any,
+  fileName: string
+) {
+
+  if (!fs.existsSync(applicationFolder)) {
+
+    fs.mkdirSync(applicationFolder, {
+      recursive: true
+    });
+  }
+
+  const filePath = path.join(
+    applicationFolder,
+    `${fileName}.json`
+  );
+
+  fs.writeFileSync(
+    filePath,
+    JSON.stringify(data, null, 2)
+  );
+
+  console.log(`Data saved to: ${filePath}`);
 }
 
-export function readApplicationData() {
-  const raw = fs.readFileSync(filePath, "utf-8");
-  return JSON.parse(raw);
+export function readApplicationData(
+  fileName: string
+) {
+
+  const filePath = path.join(
+    applicationFolder,
+    `${fileName}.json`
+  );
+
+  return JSON.parse(
+    fs.readFileSync(filePath, 'utf-8')
+  );
 }

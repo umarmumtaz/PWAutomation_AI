@@ -47,6 +47,5 @@ await this.page.getByRole('textbox', { name: 'Interests' }).click();
 await this.page.getByRole('textbox', { name: 'Interests' }).fill('test');
 
 
-
 }
 }

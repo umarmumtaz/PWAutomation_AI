@@ -13,7 +13,7 @@ test.describe.serial("Apply for job flow with register e2e", () => {
   //     await page.goto('');
 });
 
-test("@smoke Apply for job flow", async ({ page }) => {
+test.only("@smoke Apply for job flow", async ({ page }) => {
   const applyWizardPage = new ApplyWizardPage(page);
   await page.goto("");
   await page.locator('[data-test="a-sign-in"]').click();
@@ -33,7 +33,7 @@ test("@smoke Apply for job flow", async ({ page }) => {
   await applyWizardPage.aboutYouPage.deleteEmployment();
   await applyWizardPage.aboutYouPage.addEducation();
   await applyWizardPage.aboutYouPage.deleteEducation();
-  await applyWizardPage.aboutYouPage.addotherEducation();
+  await applyWizardPage.aboutYouPage.addOtherEducation();
   await applyWizardPage.aboutYouPage.fillPersonalDetails();
   await applyWizardPage.aboutYouPage.updateEducation();
   await page.getByRole("button", { name: "Continue" }).click();
@@ -51,60 +51,10 @@ test("@smoke Apply for job flow", async ({ page }) => {
   await applyWizardPage.declarationPage.clickCandidateHomeLink();
   await applyWizardPage.declarationPage.accountRecoveryPopup();
 
-  
-  //STEP 1 → Extract Candidate Data
-  
-  const candidateData = await applyWizardPage.exportApplicationData();
-
- // STEP 2 → Save JSON
-
-  saveApplicationData(candidateData);
-
-  /*
-  ===============================
-  STEP 3 → Open Employer Site
-  ===============================
-  */
-
-  await page.goto("https://employer-site-url");
-
-  /*
-  Example navigation
-  */
-
-  await page.click("text=Applications");
-
-  /*
-  ===============================
-  STEP 4 → Extract Employer Data
-  ===============================
-  */
-
-  const employerData =
-    await applyWizardPage.exportApplicationData();
-
-  /*
-  ===============================
-  STEP 5 → Load Saved JSON
-  ===============================
-  */
-
-  const savedData = readApplicationData();
-
-  /*
-  ===============================
-  STEP 6 → Compare
-  ===============================
-  */
-
-  compareApplicationData(savedData, employerData);
-
-
-
-
-
-
 });
+
+
+
 
 test("for debugging purpose ", async ({ page }) => {
 
@@ -119,3 +69,7 @@ await page.goto('https://test.jobtrain.co.uk/voyagecare/');
 
 
 
+//date issue across the script
+//cv issue with debugging 
+//then extract data
+//need to check the about you page

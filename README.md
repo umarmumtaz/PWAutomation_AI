@@ -237,9 +237,8 @@ Let’s break this down clearly and practically based on **your multi-tab job ap
 
 ---
 
-# 🎯 Current Situation (Your Framework Today)
 
-You already have:
+
 
 ```
 ApplyWizardPage
@@ -259,7 +258,7 @@ fillEqualOpps()
 
 That is GOOD.
 
-But right now your framework can:
+But right now your framework can:   Inprogress
 
 ✔ Fill data
 ❌ It cannot extract data

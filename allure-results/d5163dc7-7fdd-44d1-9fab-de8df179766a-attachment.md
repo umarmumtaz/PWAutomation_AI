@@ -1,0 +1,275 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: applyJobFlow.spec.ts >> @smoke Apply for job flow
+- Location: tests\applyJobFlow.spec.ts:16:6
+
+# Error details
+
+```
+Error: ENOENT: no such file or directory, stat 'D:\PlaywrightAutomation\PWAutomationAI\PWAutomation_AI_clean\utils\docs\resume.doc'
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - dialog "cookieconsent" [ref=e2]:
+    - generic [ref=e3]:
+      - text: By clicking "Allow Cookies", you agree to the storing of cookies on your device to analyse site usage, and assist in our marketing efforts.
+      - button "Cookie Policy" [ref=e4] [cursor=pointer]
+    - generic [ref=e5]:
+      - button "Decline Cookies" [ref=e6] [cursor=pointer]: Decline
+      - button "allow cookies" [ref=e7] [cursor=pointer]: Allow cookies
+  - main [ref=e9]:
+    - navigation [ref=e10]:
+      - link "GO BACK (MY JOBS)" [ref=e11] [cursor=pointer]:
+        - /url: /voyagecare/MyJobs
+        - generic [ref=e12]: arrow_back
+        - generic [ref=e13]: GO BACK (My Jobs)
+      - link "CLOSE TO (MY JOBS)" [ref=e14] [cursor=pointer]:
+        - /url: /voyagecare/MyJobs
+        - generic [ref=e15]: Close
+        - generic [ref=e16]: close
+    - generic [ref=e17]:
+      - img "New Client logo" [ref=e19]
+      - list [ref=e21]:
+        - listitem [ref=e22]:
+          - link "About You" [ref=e23] [cursor=pointer]:
+            - /url: /voyagecare/Application/Application?JobId=535&section=1
+            - generic [ref=e24]: About You
+        - listitem [ref=e25]:
+          - link "Supporting information" [ref=e26] [cursor=pointer]:
+            - /url: /voyagecare/Application/SupportingInformation?JobId=535&section=4
+            - generic [ref=e27]: Supporting information
+        - listitem [ref=e28]:
+          - link "Equal opportunities" [ref=e29] [cursor=pointer]:
+            - /url: /voyagecare/Application/Application?JobId=535&section=5
+            - generic [ref=e30]: Equal opportunities
+        - listitem [ref=e31]:
+          - link "Review and submit" [ref=e32] [cursor=pointer]:
+            - /url: /voyagecare/Application/Application?JobId=535&section=9
+            - generic [ref=e33]: Review and submit
+      - generic [ref=e34]:
+        - generic [ref=e36]: You are applying for the role Manual tester
+        - generic [ref=e38]:
+          - generic [ref=e39]:
+            - heading "A little bit about you check_circle" [level=3] [ref=e40]
+            - paragraph
+            - generic [ref=e42]:
+              - generic [ref=e43]: Title*
+              - text: Select one option
+              - generic [ref=e44]:
+                - combobox "Title*" [ref=e45]:
+                  - option "Dr"
+                  - option "Miss"
+                  - option "Mr"
+                  - option "Mrs"
+                  - option "Ms"
+                  - option "Other"
+                  - option "Prof"
+                - generic: arrow_drop_down
+                - generic [ref=e46]: Answer required
+            - generic [ref=e49]:
+              - generic [ref=e50]: Last Name*
+              - textbox "Last Name* First Name* Middle Name Current Address* Address line 2 City/Town* County* Postcode/Zip Code* Telephone Mobile Telephone* Telephone City/Town* County* Current Employer Job Title Department" [ref=e51]:
+                - /placeholder: Last Name
+                - text: Walker
+            - generic [ref=e54]:
+              - generic [ref=e55]: First Name*
+              - textbox "First Name" [ref=e56]: Paul
+            - generic [ref=e59]:
+              - generic [ref=e60]: Middle Name
+              - textbox "Middle Name" [ref=e61]
+            - generic [ref=e64]:
+              - generic [ref=e65]: Current Address*
+              - textbox "Current Address" [ref=e66]
+              - generic [ref=e67]: Answer required
+            - generic [ref=e70]:
+              - generic [ref=e71]: Address line 2
+              - textbox "Address line 2" [ref=e72]
+            - generic [ref=e75]:
+              - generic [ref=e76]: City/Town*
+              - textbox "City/Town" [ref=e77]
+              - generic [ref=e78]: Answer required
+            - generic [ref=e81]:
+              - generic [ref=e82]: County*
+              - textbox "County" [ref=e83]
+              - generic [ref=e84]: Answer required
+            - generic [ref=e87]:
+              - generic [ref=e88]: Postcode/Zip Code*
+              - textbox "Postcode/Zip Code" [ref=e89]
+              - generic [ref=e90]: Answer required
+            - generic [ref=e93]:
+              - generic [ref=e94]: Telephone
+              - textbox "Telephone" [ref=e95]
+            - generic [ref=e96]:
+              - generic [ref=e97]: Candidate Primary Email*
+              - textbox "Candidate Primary Email" [ref=e98]: dpq6d558kn@gmail.com
+            - generic [ref=e101]:
+              - generic [ref=e102]: Mobile Telephone*
+              - textbox "Mobile Telephone" [ref=e103]: "00441172345678"
+            - generic [ref=e106]:
+              - generic [ref=e107]: Telephone
+              - textbox "Telephone" [ref=e108]
+            - generic [ref=e110]:
+              - generic [ref=e111]: Are you willing to relocate?*
+              - text: Select one option
+              - generic [ref=e112]:
+                - combobox "Are you willing to relocate?*" [ref=e113]:
+                  - option "Yes"
+                  - option "No"
+                - generic: arrow_drop_down
+                - generic [ref=e114]: Answer required
+            - generic [ref=e117]:
+              - generic [ref=e118]: City/Town*
+              - textbox "City/Town" [ref=e119]
+              - generic [ref=e120]: Answer required
+            - generic [ref=e123]:
+              - generic [ref=e124]: County*
+              - textbox "County" [ref=e125]
+              - generic [ref=e126]: Answer required
+            - generic [ref=e129]:
+              - generic [ref=e130]: Current Employer
+              - textbox "Current Employer" [ref=e131]
+            - generic [ref=e134]:
+              - generic [ref=e135]: Job Title
+              - textbox "Job Title" [ref=e136]
+            - generic [ref=e139]:
+              - generic [ref=e140]: Department
+              - textbox "Department" [ref=e141]
+            - generic [ref=e143]:
+              - generic [ref=e144]: Base Salary
+              - text: Select one option
+              - generic [ref=e145]:
+                - combobox "Base Salary" [ref=e146]:
+                  - option "£0-£10,000"
+                  - option "£10,001-£20,000"
+                  - option "£100,000 +-"
+                  - option "£123,456-£789,123"
+                  - option "£20,001-£30,000"
+                  - option "£30,001-£40,000"
+                  - option "£40,001-£50,000"
+                  - option "£50,001-£60,000"
+                  - option "£60,001-£70,000"
+                  - option "£70,001-£80,000"
+                  - option "£80,001-£90,000"
+                  - option "£90,001-£100,000"
+                  - option "Unspecified-"
+                - generic: arrow_drop_down
+            - generic [ref=e148]:
+              - generic [ref=e149]: Current Salary
+              - text: Select one option
+              - generic [ref=e150]:
+                - combobox "Current Salary" [ref=e151]:
+                  - option "£0-£10,000"
+                  - option "£10,001-£20,000"
+                  - option "£100,000 +-"
+                  - option "£123,456-£789,123"
+                  - option "£20,001-£30,000"
+                  - option "£30,001-£40,000"
+                  - option "£40,001-£50,000"
+                  - option "£50,001-£60,000"
+                  - option "£60,001-£70,000"
+                  - option "£70,001-£80,000"
+                  - option "£80,001-£90,000"
+                  - option "£90,001-£100,000"
+                  - option "Unspecified-"
+                - generic: arrow_drop_down
+            - generic [ref=e153]:
+              - generic [ref=e154]: Desired Salary
+              - text: Select one option
+              - generic [ref=e155]:
+                - combobox "Desired Salary" [ref=e156]:
+                  - option "£0-£10,000"
+                  - option "£10,001-£20,000"
+                  - option "£100,000 +-"
+                  - option "£123,456-£789,123"
+                  - option "£20,001-£30,000"
+                  - option "£30,001-£40,000"
+                  - option "£40,001-£50,000"
+                  - option "£50,001-£60,000"
+                  - option "£60,001-£70,000"
+                  - option "£70,001-£80,000"
+                  - option "£80,001-£90,000"
+                  - option "£90,001-£100,000"
+                  - option "Unspecified-"
+                - generic: arrow_drop_down
+            - generic [ref=e158]:
+              - generic [ref=e159]: Desired Region
+              - text: Select all that apply
+              - generic [ref=e160]:
+                - listbox "Desired Region" [ref=e161]:
+                  - option "aPOSTRegion1" [ref=e162]
+                  - option "london" [ref=e163]
+                  - option "uk" [ref=e164]
+                - combobox [ref=e167]:
+                  - list [ref=e168]:
+                    - listitem [ref=e169]:
+                      - searchbox "Desired Region Select all that apply aPOSTRegion1" [ref=e170]
+            - generic [ref=e172]:
+              - generic [ref=e173]: Desired Category
+              - text: Select all that apply
+              - generic [ref=e174]:
+                - listbox "Desired Category" [ref=e175]:
+                  - option "aPOSTJobCategory1" [ref=e176]
+                  - option "Care Management" [ref=e177]
+                  - option "Fee Procurement" [ref=e178]
+                  - option "Group Support Managerial" [ref=e179]
+                  - option "Internal Communications" [ref=e180]
+                  - option "IT" [ref=e181]
+                  - option "Nurses" [ref=e182]
+                  - option "Operations Manager" [ref=e183]
+                  - option "Procurement" [ref=e184]
+                  - option "Property" [ref=e185]
+                  - option "Service Optimisation" [ref=e186]
+                  - option "Supervisors" [ref=e187]
+                  - option "Support Staff - Service" [ref=e188]
+                  - option "Support Worker" [ref=e189]
+                  - option "Team Leader" [ref=e190]
+                  - option "Training" [ref=e191]
+                - combobox [ref=e194]:
+                  - list [ref=e195]:
+                    - listitem [ref=e196]:
+                      - searchbox "Desired Category Select all that apply aPOSTJobCategory1" [ref=e197]
+            - generic [ref=e199]:
+              - generic [ref=e200]: Are you referred by an existing employee
+              - text: Select one option
+              - generic [ref=e201]:
+                - combobox "Are you referred by an existing employee" [ref=e202]:
+                  - option "Yes"
+                  - option "No"
+                - generic: arrow_drop_down
+            - heading "Let's get started" [level=2] [ref=e203]
+            - paragraph
+            - generic [ref=e204]:
+              - generic [ref=e205]:
+                - paragraph [ref=e206]: Please attach your CV in order for you to continue to complete your application
+                - generic [ref=e207]:
+                  - generic [ref=e209] [cursor=pointer]: Choose file
+                  - link "Google Drive Google Drive" [ref=e210] [cursor=pointer]:
+                    - /url: "#"
+                    - img "Google Drive" [ref=e212]
+                    - generic [ref=e213]: Google Drive
+                  - link "OneDrive OneDrive" [ref=e214] [cursor=pointer]:
+                    - /url: "#"
+                    - img "OneDrive" [ref=e216]
+                    - generic [ref=e217]: OneDrive
+                  - link "Dropbox Dropbox" [ref=e218] [cursor=pointer]:
+                    - /url: "#"
+                    - img "Dropbox" [ref=e220]
+                    - generic [ref=e221]: Dropbox
+              - text: check_circle
+          - separator [ref=e222]
+          - generic [ref=e223]:
+            - paragraph [ref=e225]: Or
+            - paragraph [ref=e226]: Would you prefer to fill in the application yourself? Say no more.
+            - button "Fill in myself" [ref=e228] [cursor=pointer]
+          - text: add_circle add_circle add_circle add_circle
+  - status [ref=e229]
+```

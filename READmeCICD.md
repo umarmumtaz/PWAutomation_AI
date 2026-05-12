@@ -251,7 +251,6 @@ Suitable for:
 
 This `README.md` is structured for **VS Code** and GitHub, so anyone cloning your repo will immediately understand the architecture, prerequisites, and execution flow.  
 
-Do you want me to also add a **diagram (ASCII or Mermaid)** inside the README to visually show the CI/CD flow (VS Code → GitHub → Jenkins → Docker Hub → Kubernetes)?
 
 
 
@@ -264,9 +263,9 @@ Do you want me to also add a **diagram (ASCII or Mermaid)** inside the README to
 =====================================================================
 
 
-Here’s a complete **`README.md`** you can use to document your Jenkins pipeline and global setup. It captures the tools you configured globally in Jenkins and the pipeline stages you’ve implemented:
 
-```markdown
+
+
 # Jenkins Pipeline + Global Setup for Playwright CI/CD
 
 ## Overview
@@ -337,7 +336,9 @@ docker push infodocker7410/pw-tests:${BUILD_NUMBER}
 docker push infodocker7410/pw-tests:latest
 ```
 
-### 7. Deploy to Kubernetes
+### 7. Deploy to Kubernetes (locally)
+
+
 ```bat
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
@@ -382,4 +383,207 @@ Framework and Jenkins pipeline created by **Umar Mumtaz**
 
 This `README.md` gives you a **central reference** for both Jenkins global setup and pipeline execution.  
 
-Would you like me to also extend this README with **AWS EKS integration steps** (ECR push + kubeconfig setup), so it covers both local Kubernetes and cloud deployment in one place?
+
+
+          <----------------------------------------------->
+
+
+Here’s a **comprehensive `README.md`** you can use to document the full CI/CD flow with **AWS EKS / Azure AKS / GKE** integration. It covers every step from VS Code to cloud deployment.
+
+
+# Playwright + TypeScript + Jenkins + Docker + Kubernetes CI/CD Framework
+
+## Overview
+This framework demonstrates a complete CI/CD pipeline for Playwright automation using:
+- **VS Code** → Development
+- **GitHub** → Source Control
+- **Jenkins** → CI/CD Automation
+- **Docker Hub** → Image Registry
+- **AWS EKS / Azure AKS / GKE** → Cloud Kubernetes Deployment
+
+---
+
+## CI/CD Flow
+
+flowchart TD
+    A[VS Code] --> B[GitHub Repository]
+    B --> C[Jenkins Pipeline]
+    C --> D[Docker Build]
+    D --> E[Docker Hub Registry]
+    E --> F[Cloud Kubernetes (EKS/AKS/GKE)]
+    F --> G[Automated Tests + Reports]
+```
+
+---
+
+## Step-by-Step Setup
+
+### 1. Development in VS Code
+- Write Playwright tests in TypeScript.
+- Use Page Object Model (POM) for scalability.
+- Store test data in JSON files.
+- Configure Playwright in `playwright.config.ts`.
+
+---
+
+### 2. GitHub Integration
+- Push project to GitHub.
+- Protect branches with PR reviews.
+- Store Jenkinsfile in repo for pipeline automation.
+
+---
+
+### 3. Jenkins Pipeline
+Stages:
+1. **Checkout SCM** → Pull code from GitHub.
+2. **Install Dependencies** → `npm ci`.
+3. **Install Playwright Browsers** → `npx playwright install`.
+4. **Run Tests** → `npx playwright test`.
+5. **Build Docker Image** → `docker build`.
+6. **Push Image to Docker Hub** → `docker push`.
+7. **Deploy to Kubernetes** → `kubectl apply`.
+8. **Publish Reports** → Playwright HTML + Allure.
+
+---
+
+### 4. Docker Hub
+- Login: `docker login`
+- Build: `docker build -t pw-tests .`
+- Tag: `docker tag pw-tests infodocker7410/pw-tests:latest`
+- Push: `docker push infodocker7410/pw-tests:latest`
+
+---
+
+## Cloud Kubernetes Integration
+
+### 🔹 AWS EKS
+1. **Create Cluster**
+   ```bash
+   eksctl create cluster --name pw-tests-cluster --region ap-south-1 --nodes 2
+   ```
+2. **Configure kubeconfig**
+   ```bash
+   aws eks update-kubeconfig --region ap-south-1 --name pw-tests-cluster
+   ```
+3. **Create ECR Repository**
+   ```bash
+   aws ecr create-repository --repository-name pw-tests
+   ```
+4. **Push Image to ECR**
+   ```bash
+   aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin <account-id>.dkr.ecr.ap-south-1.amazonaws.com
+   docker tag pw-tests:latest <account-id>.dkr.ecr.ap-south-1.amazonaws.com/pw-tests:latest
+   docker push <account-id>.dkr.ecr.ap-south-1.amazonaws.com/pw-tests:latest
+   ```
+5. **Deploy to EKS**
+   ```bash
+   kubectl apply -f deployment.yaml
+   kubectl apply -f service.yaml
+   kubectl rollout status deployment/pw-tests
+   ```
+
+---
+
+### 🔹 Azure AKS
+1. **Create Cluster**
+   ```bash
+   az aks create --resource-group myResourceGroup --name pw-tests-cluster --node-count 2 --enable-addons monitoring --generate-ssh-keys
+   ```
+2. **Configure kubeconfig**
+   ```bash
+   az aks get-credentials --resource-group myResourceGroup --name pw-tests-cluster
+   ```
+3. **Push Image to ACR**
+   ```bash
+   az acr login --name myRegistry
+   docker tag pw-tests myRegistry.azurecr.io/pw-tests:latest
+   docker push myRegistry.azurecr.io/pw-tests:latest
+   ```
+4. **Deploy to AKS**
+   ```bash
+   kubectl apply -f deployment.yaml
+   kubectl apply -f service.yaml
+   ```
+
+---
+
+### 🔹 Google GKE
+1. **Create Cluster**
+   ```bash
+   gcloud container clusters create pw-tests-cluster --num-nodes=2 --region=us-central1
+   ```
+2. **Configure kubeconfig**
+   ```bash
+   gcloud container clusters get-credentials pw-tests-cluster --region us-central1
+   ```
+3. **Push Image to GCR**
+   ```bash
+   docker tag pw-tests gcr.io/<project-id>/pw-tests:latest
+   docker push gcr.io/<project-id>/pw-tests:latest
+   ```
+4. **Deploy to GKE**
+   ```bash
+   kubectl apply -f deployment.yaml
+   kubectl apply -f service.yaml
+   ```
+
+---
+
+## Kubernetes Manifests
+
+### deployment.yaml
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pw-tests
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pw-tests
+  template:
+    metadata:
+      labels:
+        app: pw-tests
+    spec:
+      containers:
+      - name: pw-tests
+        image: <cloud-registry>/pw-tests:latest
+        ports:
+        - containerPort: 3000
+```
+
+### service.yaml
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: pw-tests-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: pw-tests
+  ports:
+  - port: 80
+    targetPort: 3000
+```
+
+---
+
+## Verification
+- Check pods: `kubectl get pods`
+- Check deployments: `kubectl get deployments`
+- Check services: `kubectl get services`
+- Restart deployment: `kubectl rollout restart deployment pw-tests`
+
+---
+
+## Author
+Framework created by **Umar Mumtaz**  
+*SQA Lead | Automation Engineer*
+
+---
+```
+
+This README now covers **all three cloud providers (AWS EKS, Azure AKS, GKE)** with exact commands, plus the full CI/CD flow from VS Code to cloud deployment.  

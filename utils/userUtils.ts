@@ -1,30 +1,43 @@
 import fs from 'fs';
 import path from 'path';
 
-const usersFilePath = path.resolve(__dirname, '../storage/users.json');
+const usersFilePath = path.resolve(
+  process.cwd(),
+  'storage',
+  'users.json'
+);
 
-export function saveUserData(email: string, password: string) {
-  let users: { email: string; password: string }[] = [];
+export function saveUserData(
+  email: string,
+  password: string
+) {
 
-  // Read existing users.json
+  let users = [];
+
   if (fs.existsSync(usersFilePath)) {
-    const data = fs.readFileSync(usersFilePath, 'utf-8');
+
+    const fileData =
+      fs.readFileSync(usersFilePath, 'utf-8');
+
     try {
-      users = JSON.parse(data);
+
+      users = JSON.parse(fileData);
+
     } catch {
+
       users = [];
     }
   }
 
-  // Add new user
-  users.push({ email, password });
+  users.push({
+    email,
+    password
+  });
 
-  // Write back to file
-  fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+  fs.writeFileSync(
+    usersFilePath,
+    JSON.stringify(users, null, 2)
+  );
+
+  console.log('User saved successfully');
 }
-
-
-
-
-
-

@@ -1,6 +1,6 @@
 import {test, expect, BrowserContext, chromium} from '@playwright/test';
-import LoginPage from '../pages/LoginPage.ts';
-import { prepareHome } from '../utils/commonFiles.ts';
+import LoginPage from '../pages/LoginPage';
+import { prepareHome } from '../utils/commonFiles';
 
 test.describe('Run all the test cases', () => {
   //test before all pre conditions of the TCs

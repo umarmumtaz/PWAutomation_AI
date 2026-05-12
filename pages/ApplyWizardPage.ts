@@ -30,9 +30,7 @@ constructor(public page: Page) {
 //it export complete application json file for the data which is filled in the application form
 async exportApplicationData() {
 
-  const personalDetails =
-    await this.aboutYouPage.extractPersonalDetails();
-
+  const personalDetails = await this.aboutYouPage.extractPersonalDetails();
 
   return {
     personalDetails,

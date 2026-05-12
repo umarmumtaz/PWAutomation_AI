@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
-import  LoginPage  from "../pages/LoginPage.ts";
+import  LoginPage  from "../pages/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage";
-import { saveUserData } from "../utils/userUtils.ts";
-import { prepareHome } from '../utils/commonFiles.ts';
+import { saveUserData } from "../utils/userUtils";
+import { prepareHome } from '../utils/commonFiles';
 
 
 
