@@ -32,54 +32,46 @@ export default class AboutYouPage {
   //   .setInputFiles('D:/PlaywrightAutomation/PWAutomationAI/resume testting.doc');
 
   //     }
-
+//issue
   async updateEmployment() {
-    await this.page.getByTestId("btn-ref-edit-0").click();
-    await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "Industry" }).click();
-    await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "Industry" }).fill("test");
-    await this.page.getByRole("textbox", { name: "Address", exact: true }).click();
-    await this.page.getByRole("textbox", { name: "Address", exact: true }).fill("test");
-    await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "City" })  .click();
-    await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "City" }).fill("test");
-    await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "County" }).click();
-    await this.page.getByTestId("div-equal-opportunities-form-section")
-    await this.page.getByRole("textbox", { name: "County" }).fill("test");
-await this.page.getByLabel("Country").selectOption("1");
-await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "Post Code" }).click();
-await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "Post Code" }).fill("testt");
-await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "Contact Person" }).click();
-await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "Post Code" }).fill("testte");
-await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "Contact Person" }).fill("t");
-await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "Contact Person" }).click();
-await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "Contact Person" }).fill("testt");
-await this.page.getByRole("textbox", { name: "Job Description*" }).click();
-await this.page.getByRole("textbox", { name: "Job Description*" }).fill("est");
-await this.page.getByRole("textbox", { name: "Knowledge Gained*" }).click();
-await this.page.getByRole("textbox", { name: "Knowledge Gained*" }).fill("test");
-await this.page.getByText("I currently work here").click();
-await this.page.getByRole("textbox", { name: "Date From*" }).fill("05/05/2025");
-await this.page.getByTestId("btn-continue").click();
+ await this.page.getByTestId("btn-ref-edit-0").click();
+
+  await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "Industry" }).fill("test");
+  await this.page.getByRole("textbox", { name: "Address", exact: true }).fill("test");
+  await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "City" }).fill("test");
+  await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "County" }).fill("test");
+  await this.page.getByLabel("Country").selectOption("1");
+  await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "Post Code" }).fill("testt");
+  await this.page.getByTestId("div-equal-opportunities-form-section").getByRole("textbox", { name: "Contact Person" }).fill("testt");
+  await this.page.getByRole("textbox", { name: "Job Description*" }).fill("test");
+  await this.page.getByRole("textbox", { name: "Knowledge Gained*" }).fill("test");
+  await this.page.getByText("I currently work here").click();
+await this.page.getByRole('textbox', { name: 'Date From' }).click();
+await this.page.getByRole('row', { name: 'Date 26 May 2026 Date 27 May 2026 Date 28 May 2026 Date 29 May 2026 Date 30 May 2026 Date 1 May 2026 Date 2 May 2026', exact: true }).getByLabel('Date 1 May').click();
+  await this.page.getByTestId("btn-continue").click();
   }
 
   async deleteEmployment() {
     await this.page.getByTestId("btn-ref-delete-1").click();
     await this.page.getByTestId("btn-delete-employment").click();
   }
-async addEducation() {
-  await this.page.getByRole("button", { name: "add_circle" }).first().click();
+async addEducation() { 
+ await this.page.getByRole("button", { name: "add_circle" }).first().click();
   await this.page.getByRole("textbox", { name: "University/College*" }).fill("punjab university");
   await this.page.getByLabel("Sandwich Course").selectOption("Yes");
   await this.page.getByRole("textbox", { name: "Graduation Start Year [e.g." }).click();
-  await this.page.getByRole("button", { name: "Date 23 March" }).first().click();
-  await this.page.locator("#addQualificationEndDateField").click();
-  await this.page.getByRole("button", { name: "Date 28 May" }).nth(1).click();
-  await this.page.getByText("I currently study here").click();
-  await this.page.locator("#txtLEVELTYPE").selectOption("10");
-  await this.page.getByRole("textbox", { name: "Course/Degree Subject" }).fill("a");
-  await this.page.getByRole("textbox", { name: "Attempts" }).fill("1");
-  await this.page.getByRole("textbox", { name: "Level/Type of Degree *" }).fill("2022");
-  await this.page.locator("#txtREAULT").selectOption("8");
-  await this.page.getByRole("cell", { name: "Level/Type of Degree * Answer" }).getByLabel("Level/Type of Degree *").selectOption("Obtained");
+  await this.page.getByRole('row', { name: 'Date 26 May 2026 Date 27 May 2026 Date 28 May 2026 Date 29 May 2026 Date 30 May 2026 Date 1 May 2026 Date 2 May 2026', exact: true }).getByLabel('Date 1 May').click();
+  await this.page.getByRole('textbox', { name: 'Graduation Year [e.g. 1999]' }).click();
+  await this.page.getByRole('button', { name: 'Date 19 May' }).click();
+  await this.page.locator('#txtLEVELTYPE').selectOption('10');
+  await this.page.getByRole('textbox', { name: 'Course/Degree Subject' }).click();
+  await this.page.getByRole('textbox', { name: 'Course/Degree Subject' }).fill('PU');
+  await this.page.getByRole('textbox', { name: 'Attempts' }).click();
+  await this.page.getByRole('textbox', { name: 'Attempts' }).fill('1');
+  await this.page.getByRole('textbox', { name: 'Level/Type of Degree *' }).click();
+  await this.page.getByRole('textbox', { name: 'Level/Type of Degree *' }).fill('2005');
+  await this.page.locator('#txtREAULT').selectOption('5');
+  await this.page.getByRole('cell', { name: 'Level/Type of Degree * Answer' }).getByLabel('Level/Type of Degree *').selectOption('Obtained');
   await this.page.getByRole("button", { name: "Save", exact: true }).click();
 }
 
