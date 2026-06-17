@@ -47,7 +47,7 @@ export default class AboutYouPage {
   await this.page.getByRole("textbox", { name: "Knowledge Gained*" }).fill("test");
   await this.page.getByText("I currently work here").click();
 await this.page.getByRole('textbox', { name: 'Date From' }).click();
-await this.page.getByRole('row', { name: 'Date 26 May 2026 Date 27 May 2026 Date 28 May 2026 Date 29 May 2026 Date 30 May 2026 Date 1 May 2026 Date 2 May 2026', exact: true }).getByLabel('Date 1 May').click();
+await this.page.getByRole('row', { name: 'Date 26 June 2026', exact: true }).getByLabel('Date 26 June 2026').click();
   await this.page.getByTestId("btn-continue").click();
   }
 
@@ -120,7 +120,7 @@ await closeButton.click();
     }
   }
 //data extraction fill data extract data
-async extractPersonalDetails() {
+async extractCandidateApplicationData() {
 
   /*
   ============================

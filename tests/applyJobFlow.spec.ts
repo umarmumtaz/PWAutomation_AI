@@ -7,6 +7,7 @@ import { getTestFile } from "../utils/fileUtils";
 import AboutYouPage from "../pages/AboutYouPage";
 import { saveApplicationData, readApplicationData } from "../utils/jsonHelper";
 import { compareApplicationData } from "../utils/dataComparator";
+import{ selectDate } from "../utils/fileUtils";
 
 
 test.describe.serial("Apply for job flow with register e2e", () => {
@@ -14,7 +15,7 @@ test.describe.serial("Apply for job flow with register e2e", () => {
   //     await page.goto('');
 });
 
-test.only("@smoke Apply for job flow", async ({ page }) => {
+test("@smoke Apply for job flow", async ({ page }) => {
   const applyWizardPage = new ApplyWizardPage(page);
   await page.goto("");
   await page.locator('[data-test="a-sign-in"]').click();
@@ -52,23 +53,48 @@ test.only("@smoke Apply for job flow", async ({ page }) => {
   await applyWizardPage.declarationPage.clickCandidateHomeLink();
   await applyWizardPage.declarationPage.accountRecoveryPopup();
 
+  const candidateData =
+    await applyWizardPage.exportApplicationData();
+
+/*
+================================
+STEP 2 → Save JSON
+================================
+*/
+
+saveApplicationData(
+  candidateData,
+  'candidate-application'
+);
+
+console.log(candidateData);
+
 });
 
 
 
 
-test("for debugging purpose ", async ({ page }) => {
+
+
+
+test.only("for debugging purpose ", async ({ page }) => {
 
 await page.goto('https://test.jobtrain.co.uk/voyagecare/');
   await page.waitForLoadState('networkidle');
+  await page.locator('[data-test="a-sign-in"]').click();
+  await page.getByTestId('txt-email').fill('ozzdrn05ld@gmail.com');
+  await page.getByTestId("txt-password").fill('Testing@123');
+  await page.getByRole('button', { name: 'Sign in' }).click();
+await page.goto ('https://test.jobtrain.co.uk/voyagecare/Application/AboutYou?Jobid=535&section=1&Stage=0&edit=1&QuestionId=0');
+await page.getByTestId("btn-ref-edit-0").click();
+//<addcorrect url and then date picker logic>
 
-//issue in storage state
+
+ await selectDate(page, "2024", "March", "20");
 
 });
 
-
-
-
+//issue in storage state
 
 //date issue across the script
 //cv issue with debugging 
