@@ -138,4 +138,21 @@ stage('Build Docker Image') {
 
 
 
+Solution if facing the k8s stage deplopyment issue:
+
+Fix #1 (Most Likely Solution)
+
+Delete the existing deployment completely:
+
+kubectl delete deployment pw-tests
+
+Verify:
+
+kubectl get deployment
+
+Then apply again:
+
+kubectl apply -f k8s/deployment.yaml
+
+
 */
