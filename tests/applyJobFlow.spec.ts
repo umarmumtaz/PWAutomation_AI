@@ -29,9 +29,18 @@ test("@smoke Apply for job flow", async ({ page }) => {
   await applyWizardPage.JobApplyPage.verifyTheJobTitle();
   const testData = { cvFile: 'resume.doc' };
   await applyWizardPage.aboutYouPage.uploadCV(testData.cvFile);
-
   await page.waitForLoadState("networkidle");
-  await applyWizardPage.aboutYouPage.updateEmployment();
+await applyWizardPage.aboutYouPage.updateEmployment();
+//date picker frunciton from utils
+ const dateFromInput = page.getByRole("textbox", { name: "Date From" });
+  await selectDate(page, dateFromInput, "20", "March", "2024");
+  await page.waitForLoadState("networkidle");
+await page.getByTestId("btn-continue").click();
+
+
+  
+  
+
   await applyWizardPage.aboutYouPage.deleteEmployment();
   await applyWizardPage.aboutYouPage.addEducation();
   await applyWizardPage.aboutYouPage.deleteEducation();
@@ -86,11 +95,14 @@ await page.goto('https://test.jobtrain.co.uk/voyagecare/');
   await page.getByTestId("txt-password").fill('Testing@123');
   await page.getByRole('button', { name: 'Sign in' }).click();
 await page.goto ('https://test.jobtrain.co.uk/voyagecare/Application/AboutYou?Jobid=535&section=1&Stage=0&edit=1&QuestionId=0');
-await page.getByTestId("btn-ref-edit-0").click();
+await page.waitForLoadState('networkidle');
+await page.getByTestId('btn-save-personal-application-form').click();
+await page.getByRole('textbox', { name: 'Date From' }).click();
 //<addcorrect url and then date picker logic>
 
 
- await selectDate(page, "2024", "March", "20");
+const dateFromInput = page.getByRole("textbox", { name: "Date From" });
+  await selectDate(page, dateFromInput, "20", "March", "2024");
 
 });
 

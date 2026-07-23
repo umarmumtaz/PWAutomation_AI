@@ -46,11 +46,12 @@ export default class AboutYouPage {
   await this.page.getByRole("textbox", { name: "Job Description*" }).fill("test");
   await this.page.getByRole("textbox", { name: "Knowledge Gained*" }).fill("test");
   await this.page.getByText("I currently work here").click();
-await this.page.getByRole('textbox', { name: 'Date From' }).click();
-await this.page.getByRole('row', { name: 'Date 26 June 2026', exact: true }).getByLabel('Date 26 June 2026').click();
-  await this.page.getByTestId("btn-continue").click();
+  
   }
 
+
+
+  
   async deleteEmployment() {
     await this.page.getByTestId("btn-ref-delete-1").click();
     await this.page.getByTestId("btn-delete-employment").click();
@@ -59,10 +60,7 @@ async addEducation() {
  await this.page.getByRole("button", { name: "add_circle" }).first().click();
   await this.page.getByRole("textbox", { name: "University/College*" }).fill("punjab university");
   await this.page.getByLabel("Sandwich Course").selectOption("Yes");
-  await this.page.getByRole("textbox", { name: "Graduation Start Year [e.g." }).click();
-  await this.page.getByRole('row', { name: 'Date 26 May 2026 Date 27 May 2026 Date 28 May 2026 Date 29 May 2026 Date 30 May 2026 Date 1 May 2026 Date 2 May 2026', exact: true }).getByLabel('Date 1 May').click();
-  await this.page.getByRole('textbox', { name: 'Graduation Year [e.g. 1999]' }).click();
-  await this.page.getByRole('button', { name: 'Date 19 May' }).click();
+
   await this.page.locator('#txtLEVELTYPE').selectOption('10');
   await this.page.getByRole('textbox', { name: 'Course/Degree Subject' }).click();
   await this.page.getByRole('textbox', { name: 'Course/Degree Subject' }).fill('PU');

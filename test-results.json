@@ -1,6 +1,6 @@
 {
   "config": {
-    "configFile": "D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\playwright.config.ts",
+    "configFile": "D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\playwright.config.js",
     "rootDir": "D:/PlaywrightAutomation/PWAutomationAI/PWAutomation_AI_clean/tests",
     "forbidOnly": false,
     "fullyParallel": false,
@@ -71,9 +71,11 @@
       "line": 0,
       "specs": [
         {
-          "title": "for debugging purpose ",
+          "title": "@smoke Apply for job flow",
           "ok": false,
-          "tags": [],
+          "tags": [
+            "smoke"
+          ],
           "tests": [
             {
               "timeout": 300000,
@@ -83,64 +85,61 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "parallelIndex": 0,
-                  "status": "failed",
-                  "duration": 3457,
+                  "status": "timedOut",
+                  "duration": 300279,
                   "error": {
-                    "message": "Error: page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"https://test.jobtrain.co.uk/voyagecare/\", waiting until \"load\"\u001b[22m\n",
-                    "stack": "Error: page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"https://test.jobtrain.co.uk/voyagecare/\", waiting until \"load\"\u001b[22m\n\n    at D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\tests\\applyJobFlow.spec.ts:82:12",
-                    "location": {
-                      "file": "D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\tests\\applyJobFlow.spec.ts",
-                      "column": 12,
-                      "line": 82
-                    },
-                    "snippet": "\u001b[0m \u001b[90m 80 |\u001b[39m test\u001b[33m.\u001b[39monly(\u001b[32m\"for debugging purpose \"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 81 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 82 |\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://test.jobtrain.co.uk/voyagecare/'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 83 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 84 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-test=\"a-sign-in\"]'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 85 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'txt-email'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'ozzdrn05ld@gmail.com'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                    "message": "\u001b[31mTest timeout of 300000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 300000ms exceeded.\u001b[39m"
                   },
                   "errors": [
                     {
+                      "message": "\u001b[31mTest timeout of 300000ms exceeded.\u001b[39m"
+                    },
+                    {
                       "location": {
-                        "file": "D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\tests\\applyJobFlow.spec.ts",
-                        "column": 12,
-                        "line": 82
+                        "file": "D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\pages\\AboutYouPage.ts",
+                        "column": 60,
+                        "line": 130
                       },
-                      "message": "Error: page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"https://test.jobtrain.co.uk/voyagecare/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 80 |\u001b[39m test\u001b[33m.\u001b[39monly(\u001b[32m\"for debugging purpose \"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 81 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 82 |\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://test.jobtrain.co.uk/voyagecare/'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 83 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 84 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-test=\"a-sign-in\"]'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 85 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'txt-email'\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m'ozzdrn05ld@gmail.com'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\tests\\applyJobFlow.spec.ts:82:12\u001b[22m"
+                      "message": "Error: locator.inputValue: Test timeout of 300000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('select-txtTITLE')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\AboutYouPage.ts:130\n\n\u001b[0m \u001b[90m 128 |\u001b[39m\n \u001b[90m 129 |\u001b[39m   \u001b[36mconst\u001b[39m personalDetails \u001b[33m=\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 130 |\u001b[39m      title\u001b[33m:\u001b[39m \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'select-txtTITLE'\u001b[39m)\u001b[33m.\u001b[39minputValue()\u001b[33m,\u001b[39m\n \u001b[90m     |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 131 |\u001b[39m     currentAddress\u001b[33m:\u001b[39m \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage \u001b[33m.\u001b[39mgetByTestId(\u001b[32m'txt-txtCURRENTADDRESS'\u001b[39m) \u001b[33m.\u001b[39minputValue()\u001b[33m,\u001b[39m\n \u001b[90m 132 |\u001b[39m     city\u001b[33m:\u001b[39m \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage \u001b[33m.\u001b[39mgetByTestId(\u001b[32m'txt-txtCITYTOWN'\u001b[39m) \u001b[33m.\u001b[39minputValue()\u001b[33m,\u001b[39m\n \u001b[90m 133 |\u001b[39m     county\u001b[33m:\u001b[39m \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'txt-txtCOUNTY'\u001b[39m) \u001b[33m.\u001b[39minputValue()\u001b[33m,\u001b[39m\u001b[0m\n\u001b[2m    at AboutYouPage.extractCandidateApplicationData (D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\pages\\AboutYouPage.ts:130:60)\u001b[22m\n\u001b[2m    at ApplyWizardPage.exportApplicationData (D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\pages\\ApplyWizardPage.ts:33:51)\u001b[22m\n\u001b[2m    at D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\tests\\applyJobFlow.spec.ts:66:27\u001b[22m"
                     }
                   ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-06-15T23:23:59.949Z",
+                  "startTime": "2026-07-23T12:13:25.473Z",
                   "annotations": [],
                   "attachments": [
                     {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\test-results\\applyJobFlow--smoke-Apply-for-job-flow-chromium\\test-failed-1.png"
+                    },
+                    {
                       "name": "error-context",
                       "contentType": "text/markdown",
-                      "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\test-results\\applyJobFlow-for-debugging-purpose--chromium\\error-context.md"
+                      "path": "D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\test-results\\applyJobFlow--smoke-Apply-for-job-flow-chromium\\error-context.md"
                     }
-                  ],
-                  "errorLocation": {
-                    "file": "D:\\PlaywrightAutomation\\PWAutomationAI\\PWAutomation_AI_clean\\tests\\applyJobFlow.spec.ts",
-                    "column": 12,
-                    "line": 82
-                  }
+                  ]
                 }
               ],
               "status": "unexpected"
             }
           ],
-          "id": "4f5c862c04026507556c-30ad276e7c2da658cbc6",
+          "id": "4f5c862c04026507556c-a27cc4500367d9e8bc7b",
           "file": "applyJobFlow.spec.ts",
-          "line": 80,
-          "column": 6
+          "line": 18,
+          "column": 5
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-06-15T23:23:58.071Z",
-    "duration": 6083.811999976635,
+    "startTime": "2026-07-23T12:13:22.783Z",
+    "duration": 303819.30599999987,
     "expected": 0,
     "skipped": 0,
     "unexpected": 1,
